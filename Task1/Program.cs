@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        //Note:
         //I've made a mistake and solve Task 1 in extranl repo
         //(I did't know the logic, then the instructor explained later, while i was already pushed the task solution)
         //repo link : https://github.com/Safa1004/CsharpFundamentals-Part1.git
