@@ -137,7 +137,7 @@ class Program
        }*/
        ///////////////////////////////////////////////////////////////////////
        
-       //Task 8 (Sum of Even Numbers Only)
+       /*//Task 8 (Sum of Even Numbers Only)
        Console.Write("Enter a positive whole number N: ");
        int n = int.Parse(Console.ReadLine());
 
@@ -151,7 +151,46 @@ class Program
            }
        }
 
-       Console.WriteLine($"The sum of even numbers is: {sum}");
+       Console.WriteLine($"The sum of even numbers is: {sum}");*/
+       ///////////////////////////////////////////////////////////////////////
+       
+       //Task 9 (Validated Positive Number Input)
+       int n = 0;
+       bool validInput = false;
+
+       do
+       {
+           Console.Write("Enter a positive whole number: ");
+           string input = Console.ReadLine();
+
+           try
+           {
+               n = int.Parse(input);
+
+               if (n <= 0)
+               {
+                   Console.WriteLine("Please enter a number greater than zero.");
+               }
+               else
+               {
+                   validInput = true;
+               }
+           }
+           catch (FormatException)
+           {
+               Console.WriteLine("Invalid input. Please enter a whole number.");
+           }
+
+       } while (!validInput);
+
+       int sum = 0;
+
+       for (int i = 1; i <= n; i++)
+       {
+           sum += i;
+       }
+
+       Console.WriteLine($"The sum from 1 to {n} is: {sum}");
        
 
 
