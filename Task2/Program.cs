@@ -193,7 +193,7 @@ class Program
        Console.WriteLine($"The sum from 1 to {n} is: {sum}");*/
        ///////////////////////////////////////////////////////////////////////
        
-       //Task 10 (Simple ATM Simulation)
+       /* //Task 10 (Simple ATM Simulation)
        int correctPin = 1234;
        bool pinCorrect = false;
        for (int attempt = 1; attempt <= 3; attempt++)
@@ -311,7 +311,8 @@ class Program
                    Console.WriteLine("Invalid input. Please enter a number.");
                }
            }
-       }
+       }*/
+       
     
        
        
