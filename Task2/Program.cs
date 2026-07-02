@@ -49,7 +49,7 @@ class Program
        Console.WriteLine("Access Granted");*/
        //////////////////////////////////////////////////////////////////////
        
-       //Task 5 (Number Guessing Game)
+       /*//Task 5 (Number Guessing Game)
        int secretNumber = 67;
        int guess;
        int attempts = 0;
@@ -71,7 +71,32 @@ class Program
                Console.WriteLine($"Congrats! It took you {attempts} attempts");
            }
        }
-       while (guess != secretNumber);
+       while (guess != secretNumber);*/
+       //////////////////////////////////////////////////////////////////////
+       
+       //Task 6 (Safe Division Calculator)
+       Console.Write("Enter the first number: ");
+       string input1 = Console.ReadLine();
+
+       Console.Write("Enter the second number: ");
+       string input2 = Console.ReadLine();
+       try
+       {
+           int num1 = int.Parse(input1);
+           int num2 = int.Parse(input2);
+
+           int result = num1 / num2;
+
+           Console.WriteLine($"The result is {result}");
+       }
+       catch (DivideByZeroException)
+       {
+           Console.WriteLine("Error: You can't divide by zero!");
+       }
+       catch (FormatException)
+       {
+           Console.WriteLine("Error: Please enter valid whole numbers.");
+       }
 
 
     }
