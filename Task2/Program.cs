@@ -74,7 +74,7 @@ class Program
        while (guess != secretNumber);*/
        //////////////////////////////////////////////////////////////////////
        
-       //Task 6 (Safe Division Calculator)
+       /*//Task 6 (Safe Division Calculator)
        Console.Write("Enter the first number: ");
        string input1 = Console.ReadLine();
 
@@ -96,6 +96,44 @@ class Program
        catch (FormatException)
        {
            Console.WriteLine("Error: Please enter valid whole numbers.");
+       }*/
+       //////////////////////////////////////////////////////////////////////
+       
+       // Task 7 ( Repeating Menu with Exit Option)
+       bool running = true;
+       while (running)
+       {
+           Console.WriteLine("\n===== MENU =====");
+           Console.WriteLine("1. Say Hello");
+           Console.WriteLine("2. Show Time-of-day Greeting");
+           Console.WriteLine("3. Exit");
+           Console.Write("Enter your choice: ");
+
+           string input = Console.ReadLine();
+           try
+           {
+               int choice = int.Parse(input);
+               switch (choice)
+               {
+                   case 1:
+                       Console.WriteLine("Hello!");
+                       break;
+                   case 2:
+                       Console.WriteLine("Have a  nice day!");
+                       break;
+                   case 3:
+                       Console.WriteLine("Goodbye!");
+                       running = false;
+                       break;
+                   default:
+                       Console.WriteLine("Please choose a valid option (1-3).");
+                       break;
+               }
+           }
+           catch (FormatException)
+           {
+               Console.WriteLine("Please choose a valid option (1-3) from the menu.");
+           }
        }
 
 
