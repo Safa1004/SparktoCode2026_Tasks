@@ -99,7 +99,7 @@ class Program
        }*/
        //////////////////////////////////////////////////////////////////////
        
-       // Task 7 ( Repeating Menu with Exit Option)
+       /*// Task 7 ( Repeating Menu with Exit Option)
        bool running = true;
        while (running)
        {
@@ -134,7 +134,25 @@ class Program
            {
                Console.WriteLine("Please choose a valid option (1-3) from the menu.");
            }
+       }*/
+       ///////////////////////////////////////////////////////////////////////
+       
+       //Task 8 (Sum of Even Numbers Only)
+       Console.Write("Enter a positive whole number N: ");
+       int n = int.Parse(Console.ReadLine());
+
+       int sum = 0;
+
+       for (int i = 1; i <= n; i++)
+       {
+           if (i % 2 == 0)
+           {
+               sum += i;
+           }
        }
+
+       Console.WriteLine($"The sum of even numbers is: {sum}");
+       
 
 
     }
