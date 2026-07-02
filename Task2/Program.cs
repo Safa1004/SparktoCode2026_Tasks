@@ -25,13 +25,29 @@ class Program
         Console.WriteLine($"The sum is: {sum}");*/
        //////////////////////////////////////////////////////////////////////
        
-       //Task 3 (Multiplication Table)
+       /*//Task 3 (Multiplication Table)
        Console.Write("Enter a number: ");
        int num = int.Parse(Console.ReadLine());
        for (int i = 1; i <= 10; i++)
        {
            Console.WriteLine($"{i} * {num} = {num * i}");
-       }
+       }*/
+       //////////////////////////////////////////////////////////////////////
        
+       //Task 4 (Password Retry)
+       string validPassword = "Spark2026";
+       string userInput = "";
+       while (userInput != validPassword)
+       {
+           Console.Write("Enter the password: ");
+           userInput = Console.ReadLine();
+           if (userInput != validPassword)
+           {
+               Console.WriteLine("Incorrect password, please try again");
+           }
+       }
+       Console.WriteLine("Access Granted");
+
+
     }
 }
