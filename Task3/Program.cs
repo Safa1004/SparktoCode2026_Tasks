@@ -34,11 +34,27 @@ class Program
        Console.WriteLine($"The number of characters in your full name is: {fullNmaeLength}");*/
        ////////////////////////////////////////////////////////////////////////////
        
-       //Task 4 (Subscription End Date)
+       /* //Task 4 (Subscription End Date)
        Console.Write("Enter the number of trial days: ");
        int days = int.Parse(Console.ReadLine());
        DateTime endDate = DateTime.Today.AddDays(days);
-       Console.WriteLine($"the end date of the trail is {endDate.ToString("dd/MM/yyyy")}");
+       Console.WriteLine($"the end date of the trail is {endDate.ToString("dd/MM/yyyy")}"); */
+       ////////////////////////////////////////////////////////////////////////////
+       
+       //Task (Grade Rounding System)
+       Console.Write("Enter your raw exam score:");
+       double examScore = double.Parse(Console.ReadLine());
+       double roundedSxore = Math.Round(examScore, 0);
+       Console.WriteLine($"Your rounded score is: {roundedSxore}");
+       if (roundedSxore >= 60)
+       {
+           Console.WriteLine("Result: Pass");
+       }
+       else
+       {
+           Console.WriteLine("Result: Fail");
+       }
+       
        
        
        
