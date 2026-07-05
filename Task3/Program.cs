@@ -79,7 +79,7 @@ class Program
        }*/
        ////////////////////////////////////////////////////////////////////////////
        
-       //Task 7 (Clean Name Comparator)
+       /* //Task 7 (Clean Name Comparator)
        Console.Write("Enter your name: ");
        string name1 = Console.ReadLine();
        Console.Write("Enter your name again: ");
@@ -93,16 +93,43 @@ class Program
        else
        {
            Console.Write("No match");
+       }*/
+       ////////////////////////////////////////////////////////////////////////////
+       
+       //Task 8 Membership Expiry Checker
+       Console.Write("Enter your membership start date (yyyy-MM-dd): ");
+       string startDateInput = Console.ReadLine();
+       Console.Write("Enter the number of valid membership days: ");
+       int validDays = int.Parse(Console.ReadLine());
+       try
+       {
+           DateTime startDate = DateTime.Parse(startDateInput);
+           DateTime expiryDate = startDate.AddDays(validDays);
+           if (expiryDate >= DateTime.Today)
+           {
+               Console.WriteLine("Membership status: Active");
+           }
+           else
+           {
+               Console.WriteLine("Membership status: Expired");
+           }
+           Console.WriteLine($"Expiry date: {expiryDate.ToString("yy-MM-dd")}");
+           
+       }
+       catch (FormatException)
+       {
+           Console.WriteLine("That date doesn't look right. Please enter it like this: 2026-07-05");
        }
 
 
-       
-       
-       
-       
-       
-       
-       
+
+
+
+
+
+
+
+
 
 
     }
