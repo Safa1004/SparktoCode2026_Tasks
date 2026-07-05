@@ -41,7 +41,7 @@ class Program
        Console.WriteLine($"the end date of the trail is {endDate.ToString("dd/MM/yyyy")}"); */
        ////////////////////////////////////////////////////////////////////////////
        
-       //Task (Grade Rounding System)
+       /* //Task 5 (Grade Rounding System)
        Console.Write("Enter your raw exam score:");
        double examScore = double.Parse(Console.ReadLine());
        double roundedSxore = Math.Round(examScore, 0);
@@ -53,7 +53,31 @@ class Program
        else
        {
            Console.WriteLine("Result: Fail");
+       }*/
+       ////////////////////////////////////////////////////////////////////////////
+       
+       // Task 6 (Password Strength Checker)
+       Console.Write("Please, enter your password to check its strength: ");
+       string password = Console.ReadLine();
+       bool checkLength = password.Length >= 8;
+       bool forbiddinWord = password.ToLower().Contains("password");
+       if (checkLength && !forbiddinWord)
+       {
+           Console.WriteLine("Strong password");
        }
+       else
+       {
+           Console.WriteLine("Weak password");
+           if (!checkLength)
+           {
+               Console.WriteLine("Reason: Password must be at least 8 characters long");
+           }
+           if (forbiddinWord) //Separate if (not else-if) so this still runs even if the one above already ran
+           {
+               Console.WriteLine("Reason: Password must not contain the word 'password'");
+           }
+       }
+       
        
        
        
