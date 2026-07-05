@@ -56,7 +56,7 @@ class Program
        }*/
        ////////////////////////////////////////////////////////////////////////////
        
-       // Task 6 (Password Strength Checker)
+       /*// Task 6 (Password Strength Checker)
        Console.Write("Please, enter your password to check its strength: ");
        string password = Console.ReadLine();
        bool checkLength = password.Length >= 8;
@@ -76,7 +76,27 @@ class Program
            {
                Console.WriteLine("Reason: Password must not contain the word 'password'");
            }
+       }*/
+       ////////////////////////////////////////////////////////////////////////////
+       
+       //Task 7 (Clean Name Comparator)
+       Console.Write("Enter your name: ");
+       string name1 = Console.ReadLine();
+       Console.Write("Enter your name again: ");
+       string name2 = Console.ReadLine();
+       string cleanedName1 = name1.Trim().ToUpper();
+       string cleanedName2 = name2.Trim().ToUpper();
+       if (cleanedName1 == cleanedName2)
+       {
+           Console.Write("Match");
        }
+       else
+       {
+           Console.Write("No match");
+       }
+
+
+       
        
        
        
