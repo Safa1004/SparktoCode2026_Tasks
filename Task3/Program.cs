@@ -122,7 +122,7 @@ class Program
        } */
        ////////////////////////////////////////////////////////////////////////////
        
-       // Task 9 (Round Up / Round Down Explorer)
+       /* // Task 9 (Round Up / Round Down Explorer)
        Console.Write("Enter a decimal number: ");
        double num = double.Parse(Console.ReadLine());
        double nearest = Math.Round(num);
@@ -130,7 +130,27 @@ class Program
        double roundedDown = Math.Floor(num);
        Console.WriteLine($"Rounded to nearest: {nearest} ");
        Console.WriteLine($"Always rounded up: {roundedUp}");
-       Console.WriteLine($"Always rounded down: {roundedDown}");
+       Console.WriteLine($"Always rounded down: {roundedDown}"); */
+       ////////////////////////////////////////////////////////////////////////////
+       
+       // Task 10 (Word Position Finder)
+       Console.Write("Enter a full sentence: ");
+       string sentence = Console.ReadLine();
+
+       Console.Write("Enter a word to search for: ");
+       string word = Console.ReadLine();
+       int firstPosition = sentence.IndexOf(word);
+       int lastPosition = sentence.LastIndexOf(word);
+       if (firstPosition == -1)
+       {
+           Console.WriteLine("Word not found in the sentence.");
+       }
+       else
+       {
+           Console.WriteLine($"First occurrence at position: {firstPosition}");
+           Console.WriteLine($"Last occurrence at position: {lastPosition}");
+       }
+       
 
 
 
