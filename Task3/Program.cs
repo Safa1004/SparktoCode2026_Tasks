@@ -96,7 +96,7 @@ class Program
        }*/
        ////////////////////////////////////////////////////////////////////////////
        
-       //Task 8 Membership Expiry Checker
+       /* //Task 8 Membership Expiry Checker
        Console.Write("Enter your membership start date (yyyy-MM-dd): ");
        string startDateInput = Console.ReadLine();
        Console.Write("Enter the number of valid membership days: ");
@@ -119,7 +119,18 @@ class Program
        catch (FormatException)
        {
            Console.WriteLine("That date doesn't look right. Please enter it like this: 2026-07-05");
-       }
+       } */
+       ////////////////////////////////////////////////////////////////////////////
+       
+       // Task 9 (Round Up / Round Down Explorer)
+       Console.Write("Enter a decimal number: ");
+       double num = double.Parse(Console.ReadLine());
+       double nearest = Math.Round(num);
+       double roundedUp = Math.Ceiling(num);
+       double roundedDown = Math.Floor(num);
+       Console.WriteLine($"Rounded to nearest: {nearest} ");
+       Console.WriteLine($"Always rounded up: {roundedUp}");
+       Console.WriteLine($"Always rounded down: {roundedDown}");
 
 
 
