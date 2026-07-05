@@ -152,7 +152,7 @@ class Program
        } */
        ////////////////////////////////////////////////////////////////////////////
        
-       //Task 11 (One-Time Password (OTP) Generator)
+       /* //Task 11 (One-Time Password (OTP) Generator)
        Random random = new Random();
        int otp = random.Next(1000, 10000); //// upper bound is exclusive, so 10000 gives max 9999
        Console.WriteLine($"Your OTP code is: {otp}");
@@ -183,8 +183,31 @@ class Program
        if (!verified)
        {
            Console.WriteLine("Verification Failed");
-       }
+       }*/
+       ////////////////////////////////////////////////////////////////////////////
        
+       //task 12 (Birthday Insights)
+       Console.Write("Enter your date of birth (yyyy-MM-dd): ");
+       string dobInput = Console.ReadLine();
+       try
+       {
+           DateTime dob = DateTime.Parse(dobInput);
+           DateTime today = DateTime.Today;
+           int age = today.Year - dob.Year;
+           // If birthday hasn't happened yet this year, subtract 1
+           if (today.Month < dob.Month || (today.Month == dob.Month && today.Day < dob.Day))
+           {
+               age -= 1;
+           }
+
+           DayOfWeek birthWeekday = dob.DayOfWeek;
+           Console.WriteLine($"Your age is: {age} ");
+           Console.WriteLine($"You were born on a:  {birthWeekday}");
+       }
+       catch (FormatException)
+       {
+           Console.WriteLine("Invalid date input. Please enter it like this: 2000-05-14");
+       }
        
        
 
