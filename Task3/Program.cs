@@ -23,7 +23,7 @@ class Program
        Console.WriteLine($"The square root is: {sqrRoot}"); */
        ////////////////////////////////////////////////////////////////////////////
        
-       // Task 3 ( Name Formatter)
+       /* // Task 3 ( Name Formatter)
        Console.Write("Please, Enter your full name: ");
        string fullName = Console.ReadLine();
        string upperFullName = fullName.ToUpper();
@@ -31,7 +31,17 @@ class Program
        int fullNmaeLength = fullName.Length;
        Console.WriteLine($"Your full name in uppercase: {upperFullName}");
        Console.WriteLine($"Your full name in lowercase: {lowerFullName}");
-       Console.WriteLine($"The number of characters in your full name is: {fullNmaeLength}");
+       Console.WriteLine($"The number of characters in your full name is: {fullNmaeLength}");*/
+       ////////////////////////////////////////////////////////////////////////////
+       
+       //Task 4 (Subscription End Date)
+       Console.Write("Enter the number of trial days: ");
+       int days = int.Parse(Console.ReadLine());
+       DateTime endDate = DateTime.Today.AddDays(days);
+       Console.WriteLine($"the end date of the trail is {endDate.ToString("dd/MM/yyyy")}");
+       
+       
+       
        
 
 
