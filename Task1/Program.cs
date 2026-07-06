@@ -175,7 +175,7 @@ class Program
           
       }*/
       ////////////////////////////////////////////////////////
-      /* //TASK 9 (Day Name Finder)
+      /* //TASK 9 (Day Name Finder) solution 
       Console.WriteLine("Find which day of the week");
       Console.WriteLine("Enter a number from 1 to 7: ");
       int day_number = int.Parse(Console.ReadLine());
