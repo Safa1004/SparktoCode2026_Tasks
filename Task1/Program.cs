@@ -76,7 +76,7 @@ class Program
       
        ////////////////////////////////////////////////////////
        
-      /* // TASK 5 (Grade Letter Lookup)
+      /* // TASK 5 (Grade Letter Lookup) solution 
        // ask for a grade 
        Console.Write("Enter your grade (A, B, C, D, F): ");
        char grade = char.Parse(Console.ReadLine());
