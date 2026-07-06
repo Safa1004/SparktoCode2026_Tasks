@@ -10,7 +10,7 @@ class Program
         //repo link : https://github.com/Safa1004/CsharpFundamentals-Part1.git
        
         //solution for reference
-        /* //TASK 1 (Personal Info Card)
+        /* //TASK 1 (Personal Info Card) solution
         // Declaring variables with 4 different data types
         string name = "Safa";
         int age = 21;
