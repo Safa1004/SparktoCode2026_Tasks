@@ -48,7 +48,7 @@ class Program
     }*/
     //--------------------------------------------------------------
     //Task 7 (Grade Letter Function)
-    public static string GetGradeLetter(int score)
+    /*public static string GetGradeLetter(int score)
     {
         if (score >= 90)
         {
@@ -70,7 +70,7 @@ class Program
         {
             return "F";
         }
-    }
+    }*/
 
 
     static void Main(string[] args)
@@ -127,10 +127,11 @@ class Program
         
         //--------------------------------------------------------------
         //Task 7 (Grade Letter Function)
-        Console.Write("Enter your score: ");
+        /*Console.Write("Enter your score: ");
         int score = int.Parse(Console.ReadLine());
         string grade = GetGradeLetter(score);
-        Console.WriteLine($"Your grade is: {grade}");
+        Console.WriteLine($"Your grade is: {grade}");*/
+        
         
         
         
