@@ -55,7 +55,7 @@ class Program
        } */
        ////////////////////////////////////////////////////////
        
-       /* //TASK 4 (Voting Eligibility)
+       /* //TASK 4 (Voting Eligibility) solution 
        // ask for age
        Console.Write("Enter your age: ");
        int age = int.Parse(Console.ReadLine());
