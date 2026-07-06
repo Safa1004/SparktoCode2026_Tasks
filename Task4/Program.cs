@@ -82,7 +82,7 @@ class Program
     }*/
     //--------------------------------------------------------------
     //Task 9 (Overloaded Multiply Function)
-    public static int Multiply(int a, int b)
+   /* public static int Multiply(int a, int b)
     {
         return a * b;
     }
@@ -95,7 +95,7 @@ class Program
     public static int Multiply(int a, int b, int c)
     {
         return a * b * c;
-    }
+    }*/
 
 
 
@@ -167,14 +167,14 @@ class Program
         
         //--------------------------------------------------------------
         //Task 9 (Overloaded Multiply Function)
-        int result1 = Multiply(6, 7);
+        /*int result1 = Multiply(6, 7);
         Console.WriteLine($"Multiply(int, int) = {result1}");
 
         double result2 = Multiply(6.5, 3.8);
         Console.WriteLine($"Multiply(double, double) = {result2}");
 
         int result3 = Multiply(5, 15, 25);
-        Console.WriteLine($"Multiply(int, int, int) = {result3}");
+        Console.WriteLine($"Multiply(int, int, int) = {result3}");*/
         
         
         
