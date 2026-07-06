@@ -10,11 +10,11 @@ class Program
     }*/
     //--------------------------------------------------------------
     //Task 2 ( Square Number Function)
-    public static int Square(int number)
+    /*public static int Square(int number)
     {
         // Square means multiply a number by itself.
         return number * number;
-    }
+    }*/
     static void Main(string[] args)
     {
         /*//Task 1 ( Personalized Welcome Function)
@@ -24,10 +24,10 @@ class Program
         
         //--------------------------------------------------------------
         //Task 2 ( Square Number Function)
-        Console.Write("Enter a number: ");
+        /*Console.Write("Enter a number: ");
         int input = int.Parse(Console.ReadLine());
         int result = Square(input);
-        Console.WriteLine($"The square of {input} is {result}.");
+        Console.WriteLine($"The square of {input} is {result}.");*/
         
         
         
