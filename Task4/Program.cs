@@ -145,6 +145,45 @@ class Program
     {
         Console.WriteLine($"[{operation}] Result: {result}");
     }*/
+    //--------------------------------------------------------------
+    //Task 12 (Student Report Card Generator)
+    public static double CalculateAverage(double score1, double score2, double score3)
+    {
+        return (score1 + score2 + score3) / 3;
+    }
+    public static string GetGradeLetter(double average)
+    {
+        if (average >= 90)
+        {
+            return "A";
+        }
+        else if (average >= 80)
+        {
+            return "B";
+        }
+        else if (average >= 70)
+        {
+            return "C";
+        }
+        else if (average >= 60)
+        {
+            return "D";
+        }
+        else
+        {
+            return "F";
+        }
+    }
+    public static void PrintReportCard(string studentName, double average, string grade)
+    {
+        Console.WriteLine("----- Report Card -----");
+        Console.WriteLine($"Student: {studentName}");
+        Console.WriteLine($"Average: {average:F2}"); //formats the number to 2 decimal places, so instead of something ugly like 83.3333333 you get 83.33.
+                                                     //Much cleaner for a report card.
+        Console.WriteLine($"Grade: {grade}");
+        Console.WriteLine("------------------------");
+    }
+
 
 
 
@@ -302,6 +341,25 @@ class Program
                     break;
             }
         }*/
+        
+        //--------------------------------------------------------------
+        //Task 12 (Student Report Card Generator)
+        Console.Write("Enter student's name: ");
+        string studentName = Console.ReadLine();
+
+        Console.Write("Enter score for subject 1: ");
+        double score1 = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter score for subject 2: ");
+        double score2 = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter score for subject 3: ");
+        double score3 = double.Parse(Console.ReadLine());
+
+        double average = CalculateAverage(score1, score2, score3);
+        string grade = GetGradeLetter(average);
+
+        PrintReportCard(studentName, average, grade);
         
 
 
