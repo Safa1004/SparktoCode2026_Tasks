@@ -147,7 +147,7 @@ class Program
     }*/
     //--------------------------------------------------------------
     //Task 12 (Student Report Card Generator)
-    public static double CalculateAverage(double score1, double score2, double score3)
+    /*public static double CalculateAverage(double score1, double score2, double score3)
     {
         return (score1 + score2 + score3) / 3;
     }
@@ -182,7 +182,7 @@ class Program
                                                      //Much cleaner for a report card.
         Console.WriteLine($"Grade: {grade}");
         Console.WriteLine("------------------------");
-    }
+    }*/
 
 
 
@@ -344,7 +344,7 @@ class Program
         
         //--------------------------------------------------------------
         //Task 12 (Student Report Card Generator)
-        Console.Write("Enter student's name: ");
+        /*Console.Write("Enter student's name: ");
         string studentName = Console.ReadLine();
 
         Console.Write("Enter score for subject 1: ");
@@ -359,7 +359,7 @@ class Program
         double average = CalculateAverage(score1, score2, score3);
         string grade = GetGradeLetter(average);
 
-        PrintReportCard(studentName, average, grade);
+        PrintReportCard(studentName, average, grade);*/
         
 
 
