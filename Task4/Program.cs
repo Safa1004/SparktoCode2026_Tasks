@@ -31,10 +31,10 @@ class Program
     } */
     //--------------------------------------------------------------
     //Task 5 (Even or Odd Function)
-    public static bool IsEven(int number)
+    /*public static bool IsEven(int number)
     {
         return number % 2 == 0;
-    }
+    }*/
     
     static void Main(string[] args)
     {
@@ -63,7 +63,7 @@ class Program
         
         //--------------------------------------------------------------
         //Task 5 (Even or Odd Function)
-        Console.Write("Enter a number: ");
+        /*Console.Write("Enter a number: ");
         int input = int.Parse(Console.ReadLine());
         bool result = IsEven(input);
         if (result)
@@ -73,7 +73,9 @@ class Program
         else
         {
             Console.WriteLine("Odd");
-        }
+        }*/
+        
+        
         
         
         
