@@ -17,10 +17,10 @@ class Program
     }*/
     //--------------------------------------------------------------
     //Task 3 (Celsius to Fahrenheit Function)
-    public static double CelsiusToFahrenheit(double celsius)
+    /*public static double CelsiusToFahrenheit(double celsius)
     {
         return (celsius * 9 / 5) + 32;
-    }
+    }*/
     
     static void Main(string[] args)
     {
@@ -38,10 +38,10 @@ class Program
         
         //--------------------------------------------------------------
         //Task 3 (Celsius to Fahrenheit Function)
-        Console.Write("Enter temperature in Celsius: ");
+        /*Console.Write("Enter temperature in Celsius: ");
         double celsiusInput = double.Parse(Console.ReadLine());
         double fahrenheit = CelsiusToFahrenheit(celsiusInput);
-        Console.WriteLine($"{celsiusInput} celsius is equal to {fahrenheit} fahrenheit.");
+        Console.WriteLine($"{celsiusInput} celsius is equal to {fahrenheit} fahrenheit.");*/
         
         
         
