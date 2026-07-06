@@ -98,14 +98,14 @@ class Program
     }*/
    //--------------------------------------------------------------
    //Task 10 (Overloaded Area Calculator)
-   public static double CalculateArea(double side)
+   /*public static double CalculateArea(double side)
    {
        return side * side;
    }
    public static double CalculateArea(double length, double width)
    {
        return length * width;
-   }
+   }*/
 
 
 
@@ -188,7 +188,7 @@ class Program
         
         //--------------------------------------------------------------
         //Task 10 (Overloaded Area Calculator)
-        Console.WriteLine("Area Calculator \n");
+        /*Console.WriteLine("Area Calculator \n");
         Console.Write("Which shape do you want? (1 = Square, 2 = Rectangle): ");
         int choice = int.Parse(Console.ReadLine());
         switch (choice)
@@ -210,7 +210,7 @@ class Program
             default:
                 Console.WriteLine("Invalid choice.");
                 break;
-        }
+        }*/
         
         
         
