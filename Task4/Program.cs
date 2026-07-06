@@ -108,7 +108,7 @@ class Program
     }*/
     //--------------------------------------------------------------
     //Task 11 (Function-Based Calculator)
-    public static double Add(double a, double b)
+    /*public static double Add(double a, double b)
     {
         return a + b;
     }
@@ -144,7 +144,7 @@ class Program
     public static void DisplayResult(string operation, double result)
     {
         Console.WriteLine($"[{operation}] Result: {result}");
-    }
+    }*/
 
 
 
@@ -254,7 +254,7 @@ class Program
 
         //--------------------------------------------------------------
         //Task 11 (Function-Based Calculator)
-        bool keepGoing = true;
+        /*bool keepGoing = true;
 
         while (keepGoing)
         {
@@ -301,7 +301,8 @@ class Program
                     Console.WriteLine("Invalid choice, try again.");
                     break;
             }
-        }
+        }*/
+        
 
 
 
