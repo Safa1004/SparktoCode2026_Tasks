@@ -287,7 +287,7 @@ class Program
           }
       }*/
      ////////////////////////////////////////////////////////
-     /* //TASK 12 ( Shipping Cost Calculator)
+     /* //TASK 12 ( Shipping Cost Calculator) solution 
      Console.WriteLine("Shipping Cost Calculator)");
      // Ask user for region code
      Console.Write("Enter region code (A = local, B = national, C = international): ");
