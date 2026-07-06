@@ -128,7 +128,7 @@ class Program
       } */
       ////////////////////////////////////////////////////////
       
-      /* //TASK 7 (Movie Ticket Pricing)
+      /* //TASK 7 (Movie Ticket Pricing) solution 
       // ask for age 
       Console.Write("Enter your age: ");
       int age = int.Parse(Console.ReadLine());
