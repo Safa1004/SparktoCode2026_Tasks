@@ -96,6 +96,16 @@ class Program
     {
         return a * b * c;
     }*/
+   //--------------------------------------------------------------
+   //Task 10 (Overloaded Area Calculator)
+   public static double CalculateArea(double side)
+   {
+       return side * side;
+   }
+   public static double CalculateArea(double length, double width)
+   {
+       return length * width;
+   }
 
 
 
@@ -175,6 +185,32 @@ class Program
 
         int result3 = Multiply(5, 15, 25);
         Console.WriteLine($"Multiply(int, int, int) = {result3}");*/
+        
+        //--------------------------------------------------------------
+        //Task 10 (Overloaded Area Calculator)
+        Console.WriteLine("Area Calculator \n");
+        Console.Write("Which shape do you want? (1 = Square, 2 = Rectangle): ");
+        int choice = int.Parse(Console.ReadLine());
+        switch (choice)
+        {
+            case 1:
+                Console.Write("Enter side length: ");
+                double side = double.Parse(Console.ReadLine());
+                double squareArea = CalculateArea(side);
+                Console.WriteLine($"Area of square: {squareArea}");
+                break;
+            case 2:
+                Console.Write("Enter length: ");
+                double length = double.Parse(Console.ReadLine());
+                Console.Write("Enter width: ");
+                double width = double.Parse(Console.ReadLine());
+                double rectangleArea = CalculateArea(length, width);
+                Console.WriteLine($"Area of rectangle: {rectangleArea}");
+                break;
+            default:
+                Console.WriteLine("Invalid choice.");
+                break;
+        }
         
         
         
