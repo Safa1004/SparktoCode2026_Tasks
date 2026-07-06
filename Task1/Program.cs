@@ -150,7 +150,7 @@ class Program
       } */
       
       ////////////////////////////////////////////////////////
-      /* // Task 8 (Restaurant Bill with Membership Discount)
+      /* // Task 8 (Restaurant Bill with Membership Discount) solution 
       // ask for bill amount 
       Console.Write("Enter your total bill amount (OMR): ");
       double bill = double.Parse(Console.ReadLine());
