@@ -73,13 +73,13 @@ class Program
     }*/
     //--------------------------------------------------------------
     //Task 8 (Countdown Function)
-    public static void Countdown(int start)
+    /*public static void Countdown(int start)
     {
         for (int i = start; i >= 1; i--)
         {
             Console.WriteLine(i);
         }
-    }
+    }*/
 
 
     static void Main(string[] args)
@@ -143,10 +143,11 @@ class Program
         
         //--------------------------------------------------------------
         //Task 8 (Countdown Function)
-        Console.Write("Enter a starting number: ");
+        /*Console.Write("Enter a starting number: ");
         int start = int.Parse(Console.ReadLine());
 
-        Countdown(start);
+        Countdown(start);*/
+        
         
         
         
