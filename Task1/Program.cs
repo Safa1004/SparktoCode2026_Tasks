@@ -396,7 +396,7 @@ class Program
          Console.WriteLine("These sides do not form a valid triangle.");
      }*/
      ////////////////////////////////////////////////////////
-     /*//TASK 14 (Online Store Checkout)
+     /*//TASK 14 (Online Store Checkout) solution 
      Console.WriteLine("Online Store Checkout");
      // Ask user for product code
      Console.Write("Enter product code (1 = Headphones, 2 = Keyboard, 3 = Mouse): ");
