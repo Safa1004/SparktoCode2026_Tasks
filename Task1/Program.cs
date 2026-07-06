@@ -209,7 +209,7 @@ class Program
               
       }*/
       ////////////////////////////////////////////////////////
-      /*// TASK 10 ( Mini Calculator)
+      /*// TASK 10 ( Mini Calculator) solution 
       Console.WriteLine("Mini Calculator");
       // Ask user for first number
       Console.Write("Enter the first number: ");
