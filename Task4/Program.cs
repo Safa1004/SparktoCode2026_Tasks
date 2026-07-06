@@ -21,6 +21,15 @@ class Program
     {
         return (celsius * 9 / 5) + 32;
     }*/
+    //--------------------------------------------------------------
+    //Task 4 (Fixed Menu Display Function)
+    public static void DisplayMenu()
+    {
+        Console.WriteLine("1) Start");
+        Console.WriteLine("2) Help");
+        Console.WriteLine("3) Exit");
+    }
+    
     
     static void Main(string[] args)
     {
@@ -42,6 +51,10 @@ class Program
         double celsiusInput = double.Parse(Console.ReadLine());
         double fahrenheit = CelsiusToFahrenheit(celsiusInput);
         Console.WriteLine($"{celsiusInput} celsius is equal to {fahrenheit} fahrenheit.");*/
+        
+        //--------------------------------------------------------------
+        //Task 4 (Fixed Menu Display Function)
+        DisplayMenu();
         
         
         
