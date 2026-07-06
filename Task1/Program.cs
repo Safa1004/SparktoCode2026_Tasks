@@ -4,12 +4,13 @@ class Program
 {
     static void Main(string[] args)
     {
+        //Note:
         //I've made a mistake and solve Task 1 in extranl repo
         //(I did't know the logic, then the instructor explained later, while i was already pushed the task solution)
         //repo link : https://github.com/Safa1004/CsharpFundamentals-Part1.git
        
         //solution for reference
-        /* //TASK 1 (Personal Info Card)
+        /* //TASK 1 (Personal Info Card) solution
         // Declaring variables with 4 different data types
         string name = "Safa";
         int age = 21;
@@ -23,7 +24,7 @@ class Program
         */
        ////////////////////////////////////////////////////////
        
-       /* //TASK 2 (Rectangle Calculator)
+       /* //TASK 2 (Rectangle Calculator) solution
        // Ask user for length
        Console.Write("Enter the length of the regtangle: ");
        double length = double.Parse(Console.ReadLine());
@@ -39,7 +40,7 @@ class Program
        Console.WriteLine($"Perimeter: {perimeter}"); */
        ////////////////////////////////////////////////////////
        
-       /* //TASK 3  (Even or Odd Checker)
+       /* //TASK 3  (Even or Odd Checker) solution 
        // ask the user for a whole number 
        Console.Write("Enter a whole number: ");
        int number = int.Parse(Console.ReadLine());
@@ -54,7 +55,7 @@ class Program
        } */
        ////////////////////////////////////////////////////////
        
-       /* //TASK 4 (Voting Eligibility)
+       /* //TASK 4 (Voting Eligibility) solution 
        // ask for age
        Console.Write("Enter your age: ");
        int age = int.Parse(Console.ReadLine());
@@ -75,7 +76,7 @@ class Program
       
        ////////////////////////////////////////////////////////
        
-      /* // TASK 5 (Grade Letter Lookup)
+      /* // TASK 5 (Grade Letter Lookup) solution 
        // ask for a grade 
        Console.Write("Enter your grade (A, B, C, D, F): ");
        char grade = char.Parse(Console.ReadLine());
@@ -104,7 +105,7 @@ class Program
        } */
       
       ////////////////////////////////////////////////////////
-      /* // Task 6 (Temperature Converter)
+      /* // Task 6 (Temperature Converter) solution 
       // Ask user for Celsius temperature
       Console.Write("Enter temperature in Celsius: ");
       double temp_in_cel = double.Parse(Console.ReadLine());
@@ -127,7 +128,7 @@ class Program
       } */
       ////////////////////////////////////////////////////////
       
-      /* //TASK 7 (Movie Ticket Pricing)
+      /* //TASK 7 (Movie Ticket Pricing) solution 
       // ask for age 
       Console.Write("Enter your age: ");
       int age = int.Parse(Console.ReadLine());
@@ -149,7 +150,7 @@ class Program
       } */
       
       ////////////////////////////////////////////////////////
-      /* // Task 8 (Restaurant Bill with Membership Discount)
+      /* // Task 8 (Restaurant Bill with Membership Discount) solution 
       // ask for bill amount 
       Console.Write("Enter your total bill amount (OMR): ");
       double bill = double.Parse(Console.ReadLine());
@@ -174,7 +175,7 @@ class Program
           
       }*/
       ////////////////////////////////////////////////////////
-      /* //TASK 9 (Day Name Finder)
+      /* //TASK 9 (Day Name Finder) solution 
       Console.WriteLine("Find which day of the week");
       Console.WriteLine("Enter a number from 1 to 7: ");
       int day_number = int.Parse(Console.ReadLine());
@@ -208,7 +209,7 @@ class Program
               
       }*/
       ////////////////////////////////////////////////////////
-      /*// TASK 10 ( Mini Calculator)
+      /*// TASK 10 ( Mini Calculator) solution 
       Console.WriteLine("Mini Calculator");
       // Ask user for first number
       Console.Write("Enter the first number: ");
@@ -250,7 +251,7 @@ class Program
               
       }*/
       ////////////////////////////////////////////////////////
-     /* //Task 11 (Loan Eligibility System)
+     /* //Task 11 (Loan Eligibility System) solution 
       // Ask user for age
       Console.Write("Enter your age: ");
       int age = int.Parse(Console.ReadLine());
@@ -286,7 +287,7 @@ class Program
           }
       }*/
      ////////////////////////////////////////////////////////
-     /* //TASK 12 ( Shipping Cost Calculator)
+     /* //TASK 12 ( Shipping Cost Calculator) solution 
      Console.WriteLine("Shipping Cost Calculator)");
      // Ask user for region code
      Console.Write("Enter region code (A = local, B = national, C = international): ");
@@ -360,7 +361,7 @@ class Program
              
      }*/
      ////////////////////////////////////////////////////////
-     /*//TASK 13 ( Triangle Type Classifier)
+     /*//TASK 13 ( Triangle Type Classifier) solution 
      Console.WriteLine("Triangle Type Classifier)");
      // Ask user for the three sides
      Console.Write("Enter side A: ");
@@ -395,7 +396,7 @@ class Program
          Console.WriteLine("These sides do not form a valid triangle.");
      }*/
      ////////////////////////////////////////////////////////
-     /*//TASK 14 (Online Store Checkout)
+     /*//TASK 14 (Online Store Checkout) solution 
      Console.WriteLine("Online Store Checkout");
      // Ask user for product code
      Console.Write("Enter product code (1 = Headphones, 2 = Keyboard, 3 = Mouse): ");
@@ -453,7 +454,8 @@ class Program
      Console.WriteLine($"Tax: {tax} OMR ");
      Console.WriteLine($"Total: {total} OMR"); */
      ////////////////////////////////////////////////////////
-     /*// TASK 15 (University Admission Decision) 
+     
+     /*// TASK 15 (University Admission Decision) solution 
      Console.WriteLine("University Admission Decision Tool");
      // Ask user for program type
      Console.Write("Enter program type (S = Science, A = Arts): ");
