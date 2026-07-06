@@ -105,7 +105,7 @@ class Program
        } */
       
       ////////////////////////////////////////////////////////
-      /* // Task 6 (Temperature Converter)
+      /* // Task 6 (Temperature Converter) solution 
       // Ask user for Celsius temperature
       Console.Write("Enter temperature in Celsius: ");
       double temp_in_cel = double.Parse(Console.ReadLine());
