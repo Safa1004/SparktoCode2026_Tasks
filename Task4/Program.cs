@@ -80,6 +80,23 @@ class Program
             Console.WriteLine(i);
         }
     }*/
+    //--------------------------------------------------------------
+    //Task 9 (Overloaded Multiply Function)
+    public static int Multiply(int a, int b)
+    {
+        return a * b;
+    }
+
+    public static double Multiply(double a, double b)
+    {
+        return a * b;
+    }
+
+    public static int Multiply(int a, int b, int c)
+    {
+        return a * b * c;
+    }
+
 
 
     static void Main(string[] args)
@@ -147,6 +164,17 @@ class Program
         int start = int.Parse(Console.ReadLine());
 
         Countdown(start);*/
+        
+        //--------------------------------------------------------------
+        //Task 9 (Overloaded Multiply Function)
+        int result1 = Multiply(6, 7);
+        Console.WriteLine($"Multiply(int, int) = {result1}");
+
+        double result2 = Multiply(6.5, 3.8);
+        Console.WriteLine($"Multiply(double, double) = {result2}");
+
+        int result3 = Multiply(5, 15, 25);
+        Console.WriteLine($"Multiply(int, int, int) = {result3}");
         
         
         
