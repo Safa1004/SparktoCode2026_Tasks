@@ -24,7 +24,7 @@ class Program
         */
        ////////////////////////////////////////////////////////
        
-       /* //TASK 2 (Rectangle Calculator)
+       /* //TASK 2 (Rectangle Calculator) solution
        // Ask user for length
        Console.Write("Enter the length of the regtangle: ");
        double length = double.Parse(Console.ReadLine());
