@@ -454,7 +454,8 @@ class Program
      Console.WriteLine($"Tax: {tax} OMR ");
      Console.WriteLine($"Total: {total} OMR"); */
      ////////////////////////////////////////////////////////
-     /*// TASK 15 (University Admission Decision) 
+     
+     /*// TASK 15 (University Admission Decision) solution 
      Console.WriteLine("University Admission Decision Tool");
      // Ask user for program type
      Console.Write("Enter program type (S = Science, A = Arts): ");
