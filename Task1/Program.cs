@@ -40,7 +40,7 @@ class Program
        Console.WriteLine($"Perimeter: {perimeter}"); */
        ////////////////////////////////////////////////////////
        
-       /* //TASK 3  (Even or Odd Checker)
+       /* //TASK 3  (Even or Odd Checker) solution 
        // ask the user for a whole number 
        Console.Write("Enter a whole number: ");
        int number = int.Parse(Console.ReadLine());
