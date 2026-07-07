@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         //Task 1 (Fixed Grades Array)
-        int [] grades = new int [5];
+        /*int [] grades = new int [5];
         // for loop to get input from the user and store each grade
         for (int i = 0 ; i < grades.Length ; i++)
         {
@@ -18,7 +18,10 @@ class Program
         foreach (int grade in grades)
         {
             Console.WriteLine(grade);
-        }
+        }*/
+        //////////////////////////////////////////////////////////////////////////////////
+        
+        
 
     }
 }
