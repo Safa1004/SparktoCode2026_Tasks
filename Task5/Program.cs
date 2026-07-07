@@ -78,6 +78,30 @@ class Program
         Console.WriteLine($"Now serving: {servedCustomer}");
         Console.WriteLine("Customers remaining in line: " + customerLine.Count);*/
         //////////////////////////////////////////////////////////////////////////////////
+        
+        //Task 5 (Array Grade Range)
+        // array to store 5 grades
+        int[] grades = new int[5];
+        // loop to get the 5 grades from the user
+        for (int i = 0 ; i <grades.Length ; i++)
+        {
+            Console.Write("Enter grade " + (i + 1) + ": ");
+            grades[i] = int.Parse(Console.ReadLine());
+            
+        }
+        // sort the array so lowest is at index 0 and highest is at the last index 
+        Array.Sort(grades);
+        // loop through the sorted array to add up all the grades
+        int sum = 0;
+        for (int i = 0; i < grades.Length; i++)
+        {
+            sum += grades[i];
+        }
+        double average = (double)sum / grades.Length; // (double) so we don't lose decimals
+        Console.WriteLine("\nLowest grade: " + grades[0]);
+        Console.WriteLine("Highest grade: " + grades[grades.Length - 1]);
+        Console.WriteLine("Average grade: " + average);
+
 
 
 
