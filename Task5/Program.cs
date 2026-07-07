@@ -60,8 +60,28 @@ class Program
         Console.WriteLine("You are now on: " + history.Peek());*/
         //////////////////////////////////////////////////////////////////////////////////
         
-        
-        
+        //Task 4 (Customer Service Queue)
+        // queue to represent customers waiting in line (first in, first out)
+        Queue<string> customerLine = new Queue<string>();
+        // ask user for 3 customer names and enqueue each one
+        for (int i = 0; i < 3; i++)
+        {
+            Console.Write("Enter customer name " + (i + 1) + ": ");
+            string name = Console.ReadLine();
+
+            customerLine.Enqueue(name); //adds elements 
+        }
+        Console.WriteLine("\nCustomers currently in line: " + customerLine.Count); 
+        // serve the first customer by dequeuing them from the front of the line
+        string servedCustomer = customerLine.Dequeue();
+        //Dequeue() => removes the first item from the front of the queue and returns it to you at the same time.
+        Console.WriteLine($"Now serving: {servedCustomer}");
+        Console.WriteLine("Customers remaining in line: " + customerLine.Count);
+
+
+
+
+
 
     }
 }
