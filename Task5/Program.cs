@@ -156,7 +156,7 @@ class Program
         //////////////////////////////////////////////////////////////////////////////////
         
         //Task 8 (Undo Last Action)
-        // stack to track actions done in the editor
+       /* // stack to track actions done in the editor
         Stack<string> actions = new Stack<string>();
         Console.WriteLine("Enter your actions one by one.");
         Console.WriteLine("Type 'stop' when you're done.\n");
@@ -183,7 +183,8 @@ class Program
         foreach (string a in actions)
         {
             Console.WriteLine($"- {a}");
-        }
+        }*/
+       //////////////////////////////////////////////////////////////////////////////////
         
 
 
