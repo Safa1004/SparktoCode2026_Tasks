@@ -102,6 +102,36 @@ class Program
         Console.WriteLine("Highest grade: " + grades[grades.Length - 1]);
         Console.WriteLine("Average grade: " + average);*/
         //////////////////////////////////////////////////////////////////////////////////
+        
+        //Task 6 (Filtered Shopping List)
+        // List to store shopping items
+        List<string> shoppingList = new List<string>();
+        Console.WriteLine("Enter items to add to your shopping list.");
+        Console.WriteLine("Type 'done' when you're finished.\n");
+        string item = ""; // will hold whatever the user types each time
+        // while loop keeps asking for items until the user types "done"
+        while (item != "done")
+        {
+            Console.Write("Enter item: ");
+            item = Console.ReadLine();
+
+            // only add it if it's not the word "done"
+            if (item != "done")
+            {
+                shoppingList.Add(item); //add elements 
+            }
+        }
+        Console.Write("\nEnter the name of the item you want to remove: ");
+        string itemToRemove = Console.ReadLine();
+        //Remove takes out the first match it finds in the list
+        shoppingList.Remove(itemToRemove);
+        Console.WriteLine("\nFinal shopping list:");
+        // foreach loop to print everything left in the list
+        foreach (string i in shoppingList)
+        {
+            Console.WriteLine("- " + i);
+        }
+        
 
 
 
