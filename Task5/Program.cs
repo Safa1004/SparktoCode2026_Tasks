@@ -134,7 +134,7 @@ class Program
         //////////////////////////////////////////////////////////////////////////////////
         
         //Task 7 (High Score Podium)
-        // List to store 5 game scores
+        /*// List to store 5 game scores
         List<int> scores = new List<int>();
 
         // loop to get 5 scores from the user
@@ -152,7 +152,10 @@ class Program
         Console.WriteLine("\n--- Podium ---");
         Console.WriteLine("1st place: " + scores[0]);
         Console.WriteLine("2nd place: " + scores[1]);
-        Console.WriteLine("3rd place: " + scores[2]);
+        Console.WriteLine("3rd place: " + scores[2]);*/
+        //////////////////////////////////////////////////////////////////////////////////
+        
+        //
 
         
 
