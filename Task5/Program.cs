@@ -22,7 +22,7 @@ class Program
         //////////////////////////////////////////////////////////////////////////////////
         
         //Task 2 (Dynamic To-Do List)
-        // List to store to-do items, no fixed size needed (dynamic)
+        /*// List to store to-do items, no fixed size needed (dynamic)
         List<String> tasks = new List<string>();
         // loop 5 times asking the user for a task each time
         for (int i = 0; i < 5; i++)
@@ -39,7 +39,9 @@ class Program
         {
             Console.WriteLine($"{number}. {task}");
             number++; // increase the number for the next task
-        }
+        }*/
+        //////////////////////////////////////////////////////////////////////////////////
+        
 
     }
 }
