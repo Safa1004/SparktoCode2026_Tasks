@@ -42,6 +42,25 @@ class Program
         }*/
         //////////////////////////////////////////////////////////////////////////////////
         
+        //Task 3 (Browsing History Stack)
+        // stack to represent browser history (last page visited is on top (last in-first out)
+        Stack<string> history = new Stack<string>();
+        // ask user for 3 URLs and push each one onto the stack
+        for (int i = 0; i < 3; i++)
+        {
+            Console.Write("Enter website URL " + (i + 1) + ": ");
+            string url = Console.ReadLine();
+            history.Push(url); //adss elements
+        }
+        Console.WriteLine("\nCurrent page: " + history.Peek()); //shows the 3rd URL (last one / in) (the one currently on top)
+        // simulate pressing "back" once by popping the top page off the stack
+        string poppedPage = history.Pop(); //you remove that current page, and whatever was pushed before it becomes the new top
+        Console.WriteLine($"Going back from: {poppedPage}");
+        // after popping, the new top of the stack is the page we land on
+        Console.WriteLine("You are now on: " + history.Peek());
+        
+        
+        
 
     }
 }
