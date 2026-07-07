@@ -80,7 +80,7 @@ class Program
         //////////////////////////////////////////////////////////////////////////////////
         
         //Task 5 (Array Grade Range)
-        // array to store 5 grades
+        /*// array to store 5 grades
         int[] grades = new int[5];
         // loop to get the 5 grades from the user
         for (int i = 0 ; i <grades.Length ; i++)
@@ -100,7 +100,8 @@ class Program
         double average = (double)sum / grades.Length; // (double) so we don't lose decimals
         Console.WriteLine("\nLowest grade: " + grades[0]);
         Console.WriteLine("Highest grade: " + grades[grades.Length - 1]);
-        Console.WriteLine("Average grade: " + average);
+        Console.WriteLine("Average grade: " + average);*/
+        //////////////////////////////////////////////////////////////////////////////////
 
 
 
