@@ -21,7 +21,25 @@ class Program
         }*/
         //////////////////////////////////////////////////////////////////////////////////
         
-        
+        //Task 2 (Dynamic To-Do List)
+        // List to store to-do items, no fixed size needed (dynamic)
+        List<String> tasks = new List<string>();
+        // loop 5 times asking the user for a task each time
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write("Enter task " + (i + 1) + ": ");
+            string task = Console.ReadLine();
+            // add the entered task to the list by using .Add
+            tasks.Add(task);
+        }
+        Console.WriteLine("\nYour To-Do List:");
+        int number = 1; // used to number the tasks when printing
+        // foreach loop to print every task in the list
+        foreach (string task in tasks)
+        {
+            Console.WriteLine($"{number}. {task}");
+            number++; // increase the number for the next task
+        }
 
     }
 }
