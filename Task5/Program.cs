@@ -104,7 +104,7 @@ class Program
         //////////////////////////////////////////////////////////////////////////////////
         
         //Task 6 (Filtered Shopping List)
-        // List to store shopping items
+        /*// List to store shopping items
         List<string> shoppingList = new List<string>();
         Console.WriteLine("Enter items to add to your shopping list.");
         Console.WriteLine("Type 'done' when you're finished.\n");
@@ -130,7 +130,8 @@ class Program
         foreach (string i in shoppingList)
         {
             Console.WriteLine("- " + i);
-        }
+        }*/
+        //////////////////////////////////////////////////////////////////////////////////
         
 
 
