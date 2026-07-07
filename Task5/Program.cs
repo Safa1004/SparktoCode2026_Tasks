@@ -155,9 +155,38 @@ class Program
         Console.WriteLine("3rd place: " + scores[2]);*/
         //////////////////////////////////////////////////////////////////////////////////
         
-        //
+        //Task 8 (Undo Last Action)
+        // stack to track actions done in the editor
+        Stack<string> actions = new Stack<string>();
+        Console.WriteLine("Enter your actions one by one.");
+        Console.WriteLine("Type 'stop' when you're done.\n");
+        string action = ""; // holds whatever the user types each time
+        while (action != "stop")
+        {
+            Console.Write("Enter action: ");
+            action = Console.ReadLine();
+            if (action != "stop")
+            {
+                actions.Push(action);
+            }
+        }
 
+        Console.WriteLine("\n--- Undo x2 ---");
+        // pop once to undo the most recent action
+        string undo1 = actions.Pop();
+        Console.WriteLine("Undo: " + undo1);
+        // pop again to undo the next most recent action
+        string undo2 = actions.Pop();
+        Console.WriteLine("Undo: " + undo2);
+        Console.WriteLine("\nRemaining actions on the stack:");
+        // foreach to print whatever actions are left
+        foreach (string a in actions)
+        {
+            Console.WriteLine($"- {a}");
+        }
         
+
+
 
 
 
