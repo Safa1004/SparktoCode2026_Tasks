@@ -133,6 +133,28 @@ class Program
         }*/
         //////////////////////////////////////////////////////////////////////////////////
         
+        //Task 7 (High Score Podium)
+        // List to store 5 game scores
+        List<int> scores = new List<int>();
+
+        // loop to get 5 scores from the user
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write("Enter score " + (i + 1) + ": ");
+            int score = int.Parse(Console.ReadLine());
+
+            scores.Add(score);
+        }
+        // sort puts scores in ascending order (lowest to highest) by default 
+        scores.Sort();
+        // reverse flips it so highest is now first
+        scores.Reverse();
+        Console.WriteLine("\n--- Podium ---");
+        Console.WriteLine("1st place: " + scores[0]);
+        Console.WriteLine("2nd place: " + scores[1]);
+        Console.WriteLine("3rd place: " + scores[2]);
+
+        
 
 
 
