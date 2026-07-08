@@ -2,6 +2,32 @@
 
 class Program
 {
+    //Task 9 (Grade Analyzer with Functions)
+    // takes a List of grades and returns the average as a double
+    public static double CalculateAverage(List<int> grades) //takes in one parameter a List<int> called grades.
+    {
+        int sum = 0;
+        // loop through the list and add up all the grades
+        foreach (int grade in grades)
+        {
+            sum += grade;
+        }
+        double average = (double)sum / grades.Count; //so decimals aren't lost
+        return average;
+    }
+    // takes a List of grades and returns the first one below 60
+    public static int FindFirstFailing(List<int> grades) //takes in one parameter a List<int> called grades.
+                                                         //So whoever calls this function has to hand it a list of grades.
+    {
+        //Find goes through the list and returns the first item that matches the condition
+        int failingGrade = grades.Find(x => x < 60); //find gonna scan thru the list of grades
+                                                     // about the condition is written in lambda expression style 
+                                                     //x as a stand-in name for "each item in the list, one at a time
+                                                     //So this reads as: "for each item x in the list, check if x is less than 60
+                                                     
+        return failingGrade;
+    }
+
     static void Main(string[] args)
     {
         //Task 1 (Fixed Grades Array)
@@ -20,7 +46,7 @@ class Program
             Console.WriteLine(grade);
         }*/
         //////////////////////////////////////////////////////////////////////////////////
-        
+
         //Task 2 (Dynamic To-Do List)
         /*// List to store to-do items, no fixed size needed (dynamic)
         List<String> tasks = new List<string>();
@@ -41,7 +67,7 @@ class Program
             number++; // increase the number for the next task
         }*/
         //////////////////////////////////////////////////////////////////////////////////
-        
+
         //Task 3 (Browsing History Stack)
         /*// stack to represent browser history (last page visited is on top (last in-first out)
         Stack<string> history = new Stack<string>();
@@ -59,7 +85,7 @@ class Program
         // after popping, the new top of the stack is the page we land on
         Console.WriteLine("You are now on: " + history.Peek());*/
         //////////////////////////////////////////////////////////////////////////////////
-        
+
         //Task 4 (Customer Service Queue)
         /*// queue to represent customers waiting in line (first in, first out)
         Queue<string> customerLine = new Queue<string>();
@@ -69,16 +95,16 @@ class Program
             Console.Write("Enter customer name " + (i + 1) + ": ");
             string name = Console.ReadLine();
 
-            customerLine.Enqueue(name); //adds elements 
+            customerLine.Enqueue(name); //adds elements
         }
-        Console.WriteLine("\nCustomers currently in line: " + customerLine.Count); 
+        Console.WriteLine("\nCustomers currently in line: " + customerLine.Count);
         // serve the first customer by dequeuing them from the front of the line
         string servedCustomer = customerLine.Dequeue();
         //Dequeue() => removes the first item from the front of the queue and returns it to you at the same time.
         Console.WriteLine($"Now serving: {servedCustomer}");
         Console.WriteLine("Customers remaining in line: " + customerLine.Count);*/
         //////////////////////////////////////////////////////////////////////////////////
-        
+
         //Task 5 (Array Grade Range)
         /*// array to store 5 grades
         int[] grades = new int[5];
@@ -87,9 +113,9 @@ class Program
         {
             Console.Write("Enter grade " + (i + 1) + ": ");
             grades[i] = int.Parse(Console.ReadLine());
-            
+
         }
-        // sort the array so lowest is at index 0 and highest is at the last index 
+        // sort the array so lowest is at index 0 and highest is at the last index
         Array.Sort(grades);
         // loop through the sorted array to add up all the grades
         int sum = 0;
@@ -102,7 +128,7 @@ class Program
         Console.WriteLine("Highest grade: " + grades[grades.Length - 1]);
         Console.WriteLine("Average grade: " + average);*/
         //////////////////////////////////////////////////////////////////////////////////
-        
+
         //Task 6 (Filtered Shopping List)
         /*// List to store shopping items
         List<string> shoppingList = new List<string>();
@@ -118,7 +144,7 @@ class Program
             // only add it if it's not the word "done"
             if (item != "done")
             {
-                shoppingList.Add(item); //add elements 
+                shoppingList.Add(item); //add elements
             }
         }
         Console.Write("\nEnter the name of the item you want to remove: ");
@@ -132,7 +158,7 @@ class Program
             Console.WriteLine("- " + i);
         }*/
         //////////////////////////////////////////////////////////////////////////////////
-        
+
         //Task 7 (High Score Podium)
         /*// List to store 5 game scores
         List<int> scores = new List<int>();
@@ -145,7 +171,7 @@ class Program
 
             scores.Add(score);
         }
-        // sort puts scores in ascending order (lowest to highest) by default 
+        // sort puts scores in ascending order (lowest to highest) by default
         scores.Sort();
         // reverse flips it so highest is now first
         scores.Reverse();
@@ -154,38 +180,63 @@ class Program
         Console.WriteLine("2nd place: " + scores[1]);
         Console.WriteLine("3rd place: " + scores[2]);*/
         //////////////////////////////////////////////////////////////////////////////////
-        
+
         //Task 8 (Undo Last Action)
-       /* // stack to track actions done in the editor
-        Stack<string> actions = new Stack<string>();
-        Console.WriteLine("Enter your actions one by one.");
-        Console.WriteLine("Type 'stop' when you're done.\n");
-        string action = ""; // holds whatever the user types each time
-        while (action != "stop")
+        /* // stack to track actions done in the editor
+         Stack<string> actions = new Stack<string>();
+         Console.WriteLine("Enter your actions one by one.");
+         Console.WriteLine("Type 'stop' when you're done.\n");
+         string action = ""; // holds whatever the user types each time
+         while (action != "stop")
+         {
+             Console.Write("Enter action: ");
+             action = Console.ReadLine();
+             if (action != "stop")
+             {
+                 actions.Push(action);
+             }
+         }
+
+         Console.WriteLine("\n--- Undo x2 ---");
+         // pop once to undo the most recent action
+         string undo1 = actions.Pop();
+         Console.WriteLine("Undo: " + undo1);
+         // pop again to undo the next most recent action
+         string undo2 = actions.Pop();
+         Console.WriteLine("Undo: " + undo2);
+         Console.WriteLine("\nRemaining actions on the stack:");
+         // foreach to print whatever actions are left
+         foreach (string a in actions)
+         {
+             Console.WriteLine($"- {a}");
+         }*/
+        //////////////////////////////////////////////////////////////////////////////////
+
+        //Task 9 (Grade Analyzer with Functions)
+        Console.Write("How many grades do you want to enter? ");
+        int count = int.Parse(Console.ReadLine());
+        List<int> grades = new List<int>();
+        // loop 'count' times to get each grade from the user
+        for (int i = 0; i < count; i++)
         {
-            Console.Write("Enter action: ");
-            action = Console.ReadLine();
-            if (action != "stop")
-            {
-                actions.Push(action);
-            }
+            Console.Write("Enter grade " + (i + 1) + ": ");
+            int grade = int.Parse(Console.ReadLine());
+            grades.Add(grade);
         }
 
-        Console.WriteLine("\n--- Undo x2 ---");
-        // pop once to undo the most recent action
-        string undo1 = actions.Pop();
-        Console.WriteLine("Undo: " + undo1);
-        // pop again to undo the next most recent action
-        string undo2 = actions.Pop();
-        Console.WriteLine("Undo: " + undo2);
-        Console.WriteLine("\nRemaining actions on the stack:");
-        // foreach to print whatever actions are left
-        foreach (string a in actions)
+        double average = CalculateAverage(grades);
+        int firstFailing = FindFirstFailing(grades);
+        Console.WriteLine("\nAverage grade: " + average);
+        //Find returns 0 for an int list when nothing matches, so we check for that
+        if (firstFailing == 0)
         {
-            Console.WriteLine($"- {a}");
-        }*/
-       //////////////////////////////////////////////////////////////////////////////////
-        
+            Console.WriteLine("No failing grades found.");
+        }
+        else
+        {
+            Console.WriteLine("First failing grade: " + firstFailing);
+        }
+    
 
 
 
@@ -195,5 +246,7 @@ class Program
 
 
 
-    }
+
+
+}
 }
