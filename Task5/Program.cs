@@ -2,7 +2,7 @@
 
 class Program
 {
-    //Task 9 (Grade Analyzer with Functions)
+    /*//Task 9 (Grade Analyzer with Functions)
     // takes a List of grades and returns the average as a double
     public static double CalculateAverage(List<int> grades) //takes in one parameter a List<int> called grades.
     {
@@ -26,7 +26,9 @@ class Program
                                                      //So this reads as: "for each item x in the list, check if x is less than 60
                                                      
         return failingGrade;
-    }
+    }*/
+    //------------------------------------------------------------------------------------------------------------------
+    //
 
     static void Main(string[] args)
     {
@@ -212,7 +214,7 @@ class Program
          }*/
         //////////////////////////////////////////////////////////////////////////////////
 
-        //Task 9 (Grade Analyzer with Functions)
+        /*//Task 9 (Grade Analyzer with Functions)
         Console.Write("How many grades do you want to enter? ");
         int count = int.Parse(Console.ReadLine());
         List<int> grades = new List<int>();
@@ -235,7 +237,10 @@ class Program
         else
         {
             Console.WriteLine("First failing grade: " + firstFailing);
-        }
+        }*/
+        //////////////////////////////////////////////////////////////////////////////////
+        
+        //
     
 
 
