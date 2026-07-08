@@ -29,6 +29,7 @@ class Program
     }*/
     //------------------------------------------------------------------------------------------------------------------
     //Task 10 (Print Queue Manager)
+    /*
     // takes the original queue and the job name to cancel
     // returns a new queue with that job removed
     public static Queue<string> RemoveJob(Queue<string> jobs, string jobToRemove) // parameters:
@@ -48,7 +49,7 @@ class Program
             }
         }
         return newQueue;
-    }
+    }*/
     
 
     static void Main(string[] args)
@@ -262,7 +263,7 @@ class Program
         //////////////////////////////////////////////////////////////////////////////////
         
         //Task 10 (Print Queue Manager)
-        // queue to hold print job names
+        /*// queue to hold print job names
         Queue<string> printQueue = new Queue<string>();
         Console.WriteLine("Enter print job names one by one.");
         Console.WriteLine("Type 'done' when you're finished.\n");
@@ -293,7 +294,7 @@ class Program
         foreach (string j in printQueue)
         {
             Console.WriteLine("- " + j);
-        }
+        }*/
         
 
 
