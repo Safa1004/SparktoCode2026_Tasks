@@ -28,7 +28,28 @@ class Program
         return failingGrade;
     }*/
     //------------------------------------------------------------------------------------------------------------------
-    //
+    //Task 10 (Print Queue Manager)
+    // takes the original queue and the job name to cancel
+    // returns a new queue with that job removed
+    public static Queue<string> RemoveJob(Queue<string> jobs, string jobToRemove) // parameters:
+        // 1)jobs: This is the actual queue that gets passed in when you call the function
+        //jobToRemove: This is just the name of the job you want to cancel, as plain text 
+    {
+        Queue<string> newQueue = new Queue<string>(); // new queue after job remove
+        // dequeue every item one by one from the original queue
+        //Removes and returns the object at the beginning of the queue.
+        while (jobs.Count > 0)
+        {
+            string currentJob = jobs.Dequeue();
+            // only enqueue it into the new queue if it's NOT the one being cancelled
+            if (currentJob != jobToRemove)
+            {
+                newQueue.Enqueue(currentJob);
+            }
+        }
+        return newQueue;
+    }
+    
 
     static void Main(string[] args)
     {
@@ -240,8 +261,40 @@ class Program
         }*/
         //////////////////////////////////////////////////////////////////////////////////
         
-        //
-    
+        //Task 10 (Print Queue Manager)
+        // queue to hold print job names
+        Queue<string> printQueue = new Queue<string>();
+        Console.WriteLine("Enter print job names one by one.");
+        Console.WriteLine("Type 'done' when you're finished.\n");
+        string job = ""; // holds whatever the user types each time
+        // while loop keeps enqueuing jobs until the user types "done"
+        while (job != "done")
+        {
+            Console.Write("Enter job name: ");
+            job = Console.ReadLine();
+            if (job != "done")
+            {
+                printQueue.Enqueue(job);
+            }
+        }
+        Console.WriteLine("\nPrint queue before cancellation:");
+        // foreach to show the queue in its original order
+        foreach (string j in printQueue)
+        {
+            Console.WriteLine("- " + j);
+        }
+        Console.Write("\nEnter the name of the job you want to cancel: ");
+        string jobToCancel = Console.ReadLine();
+        // call RemoveJob and store the returned queue back into printQueue
+        printQueue = RemoveJob(printQueue, jobToCancel);//as parameters 
+        
+        Console.WriteLine("\nPrint queue after cancellation:");
+
+        foreach (string j in printQueue)
+        {
+            Console.WriteLine("- " + j);
+        }
+        
 
 
 
@@ -253,5 +306,6 @@ class Program
 
 
 
-}
+
+    }
 }
