@@ -30,7 +30,8 @@ internal class Program
             Console.WriteLine("5. Transfer Amount");
             Console.WriteLine("6. List All Accounts");
             Console.WriteLine("7. Close an Account");
-            Console.WriteLine("8. Exit");
+            Console.WriteLine("8. Search Accounts by Customer Name");
+            Console.WriteLine("10. Exit");
             Console.Write("Choose an option: ");
             int choice = int.Parse(Console.ReadLine());
             switch (choice)
@@ -54,6 +55,9 @@ internal class Program
                     ListAllAccounts();
                     break;
                 case 7:
+                    CloseAccount();
+                    break;
+                case 8:
                     exitApp = true;
                     Console.WriteLine("Thank you for banking with Spark Bank. Goodbye!");
                     break;
@@ -283,6 +287,41 @@ internal class Program
         }
     }
     
-  
+    // Close an Account function 
+    public static void CloseAccount()
+    {
+        Console.Write("Enter account number to close: ");
+        string accNumber = Console.ReadLine();
+        // same search pattern as always - find the index first before
+        // doing anything
+        int foundIndex = -1;
+        for (int i = 0; i < accountNumbers.Count; i++)
+        {
+            if (accountNumbers[i] == accNumber)
+            {
+                foundIndex = i;
+            }
+        }
+        if (foundIndex == -1)
+        {
+            Console.WriteLine("Error: account number not found.");
+            return;
+        }
+        // showing the details before deleting, so the user can confirm
+        // what's actually about to be removed
+        Console.WriteLine("Closing account: " + customerNames[foundIndex] + " | Acc#: " + accountNumbers[foundIndex] + " | Balance: " + balances[foundIndex]);
+        // .RemoveAt() deletes the item at a specific index. 
+        // 3 lists, using the SAME foundIndex each time. if I only removed
+        // from customerNames and forgot the other two, the lists would
+        // become different lengths and every index after this point
+        // would point to the WRONG account for the rest of the program.
+        customerNames.RemoveAt(foundIndex);
+        accountNumbers.RemoveAt(foundIndex);
+        balances.RemoveAt(foundIndex);
+        Console.WriteLine("Account closed successfully.");
+    }
+    
+
+
 
 }
