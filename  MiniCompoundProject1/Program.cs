@@ -42,7 +42,7 @@ class Program
             
             
         }
-        // now printing ALL accounts, not just the last one entered.
+        // now printing ALL accounts, not just the last one entered
         // this needs its OWN loop, separate from the one above,
         // because by this point all the data is already collected -
         // I'm just reading it back out of the lists.
@@ -56,7 +56,7 @@ class Program
             // this line prints one full account per loop pass.
         }
         
-         
+        
         
         
         
