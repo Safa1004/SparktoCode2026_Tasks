@@ -42,6 +42,9 @@ internal class Program
                     ShowBalance();
                     break;
                 case 5:
+                    TransferAmount();
+                    break;
+                case 6:
                     exitApp = true;
                     Console.WriteLine("Thank you for banking with Spark Bank. Goodbye!");
                     break;
@@ -187,6 +190,68 @@ internal class Program
         Console.WriteLine("Account Number: " + accountNumbers[foundIndex]);
         Console.WriteLine("Balance: " + balances[foundIndex]);
         
+    }
+    
+    //Transfer Amount function 
+    public static void TransferAmount()
+    {
+        Console.Write("Enter sender's account number: ");
+        string senderAcc = Console.ReadLine();
+        
+        Console.Write("Enter receiver's account number: ");
+        string receiverAcc = Console.ReadLine();
+        
+        // finding the sender - same search pattern as always
+        int senderIndex = -1;
+        for (int i = 0; i < accountNumbers.Count; i++)
+        {
+            if (accountNumbers[i] == senderAcc)
+            {
+                senderIndex = i;
+            }
+        }
+        
+        // finding the receiver - this needs its OWN separate loop and its
+        // OWN separate variable, because I can't reuse senderIndex for
+        // this - they're two different searches for two different account
+        // numbers, and I need both results at the same time later.
+        int receiverIndex = -1;
+        for (int i = 0; i < accountNumbers.Count; i++)
+        {
+            if (accountNumbers[i] == receiverAcc)
+            {
+                receiverIndex = i;
+            }
+        }
+        // checking BOTH at once with || => (OR) - if EITHER one wasn't found,
+        // stop right here. no point checking balance or asking for an
+        // amount if we don't even know both accounts exist.
+        if (senderIndex == -1 || receiverIndex == -1)
+        {
+            Console.WriteLine("Error: one or both account numbers were not found.");
+            return;
+        }
+        Console.Write("Enter transfer amount: ");
+        double amount = double.Parse(Console.ReadLine());
+        // same insufficient-balance check as Withdraw, but only checking
+        // the SENDER's balance - the receiver doesn't need any balance
+        // check, they're just receiving money.
+        if (amount > balances[senderIndex])
+        {
+            Console.WriteLine("Error: sender has insufficient balance.");
+            return;
+        }
+        // moving the money: subtract from sender, add to receiver.
+        // order doesn't actually matter here (both lines just touch
+        // different indexes in the same list), but I'm doing subtract
+        // first just because that matches how I'd think about it in
+        // real life - take it out, then put it in.
+        balances[senderIndex] = balances[senderIndex] - amount;
+        balances[receiverIndex] = balances[receiverIndex] + amount;
+        Console.WriteLine("Transfer successful!");
+        Console.WriteLine(customerNames[senderIndex] + "'s new balance: " + balances[senderIndex]);
+        Console.WriteLine(customerNames[receiverIndex] + "'s new balance: " + balances[receiverIndex]);
+    
     }
    
 
