@@ -36,6 +36,9 @@ internal class Program
                     DepositMoney();
                     break;
                 case 3:
+                    WithdrawMoney();
+                    break;
+                case 4:
                     exitApp = true;
                     Console.WriteLine("Thank you for banking with Spark Bank. Goodbye!");
                     break;
@@ -115,5 +118,45 @@ internal class Program
         balances[foundIndex] = balances[foundIndex] + amount;
         Console.WriteLine("Deposit successful. New balance: " + balances[foundIndex]);
     }
+    //Withdraw Money function 
+    public static void WithdrawMoney()
+    {
+        Console.Write("Enter account number: ");
+        string accNumber = Console.ReadLine();
+        // same search-by-account-number pattern as DepositMoney -
+        // starting at -1 as the "not found yet" marker
+        int foundIndex = -1;
+        for (int i = 0; i < accountNumbers.Count; i++)
+        {
+            if (accountNumbers[i] == accNumber)
+            {
+                foundIndex = i;
+            }
+        }
+        if (foundIndex == -1)
+        {
+            Console.WriteLine("Error: account number not found.");
+            return;
+        }
+        Console.Write("Enter withdrawal amount: ");
+        double amount = double.Parse(Console.ReadLine());
+        // this is the new part compared to Deposit - I can't just take
+        // the money out blindly, I have to check the account actually
+        // HAS enough balance to cover it first.
+        if (amount > balances[foundIndex])
+        {
+            Console.WriteLine("Error: insufficient balance. Current balance is " + balances[foundIndex]);
+            return;
+            // return here stops the function before any subtraction
+            // happens - the balance stays untouched if there isn't
+            // enough money.
+        }
+        // only reaches here if the amount is valid (not more than what's
+        // in the account) (now it's safe to actually subtract)
+        balances[foundIndex] = balances[foundIndex] - amount;
+        Console.WriteLine("Withdrawal successful. New balance: " + balances[foundIndex]);
+
+    }
+    
 
 }
