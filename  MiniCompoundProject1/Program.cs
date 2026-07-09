@@ -256,6 +256,11 @@ internal class Program
             Console.WriteLine("Error: invalid amount entered.");
             return;
         }
+        if (amount <= 0)
+        {
+            Console.WriteLine("Error: withdrawal amount must be positive.");
+            return;
+        }
         // this is the new part compared to Deposit  
         // I can't just take the money out blindly, I have to check the account actually
         // HAS enough balance to cover it first.
@@ -341,8 +346,23 @@ internal class Program
             Console.WriteLine("Error: one or both account numbers were not found.");
             return;
         }
-        Console.Write("Enter transfer amount: ");
-        double amount = double.Parse(Console.ReadLine());
+        //new fixes try-catch 
+        double amount;
+        try
+        {
+            Console.Write("Enter transfer amount: ");
+            amount = double.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Error: invalid amount entered.");
+            return;
+        }
+        if (amount <= 0)
+        {
+            Console.WriteLine("Error: transfer amount must be positive.");
+            return;
+        }
         // same insufficient-balance check as Withdraw, but only checking
         // the SENDER's balance - the receiver doesn't need any balance
         // check, they're just receiving money.
