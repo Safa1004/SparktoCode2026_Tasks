@@ -24,7 +24,13 @@ internal class Program
             // loop keeps repeating for as long as exitApp is false.
             Console.WriteLine("\n===== Welcome to Spark Bank =====");
             Console.WriteLine("1. Add New Account");
-            Console.WriteLine("2. Exit");
+            Console.WriteLine("2. Deposit Money");
+            Console.WriteLine("3. Withdraw Money");
+            Console.WriteLine("4. Show Balance");
+            Console.WriteLine("5. Transfer Amount");
+            Console.WriteLine("6. List All Accounts");
+            Console.WriteLine("7. Close an Account");
+            Console.WriteLine("8. Exit");
             Console.Write("Choose an option: ");
             int choice = int.Parse(Console.ReadLine());
             switch (choice)
@@ -45,6 +51,9 @@ internal class Program
                     TransferAmount();
                     break;
                 case 6:
+                    ListAllAccounts();
+                    break;
+                case 7:
                     exitApp = true;
                     Console.WriteLine("Thank you for banking with Spark Bank. Goodbye!");
                     break;
@@ -253,6 +262,27 @@ internal class Program
         Console.WriteLine(customerNames[receiverIndex] + "'s new balance: " + balances[receiverIndex]);
     
     }
-   
+    // List All Accounts function 
+    public static void ListAllAccounts()
+    {
+        // edge case first: if the bank has no accounts yet, say so
+        // instead of printing an empty list with no explanation - this
+        // is worth checking before the loop even starts
+        if (customerNames.Count == 0)
+        {
+            Console.WriteLine("There are no accounts yet.");
+            return;
+        }
+        Console.WriteLine("----- All Accounts -----");
+        for (int i = 0; i < customerNames.Count; i++)
+        {
+            Console.WriteLine((i + 1) + ". " + customerNames[i] + " | Acc#: " + accountNumbers[i] + " | Balance: " + balances[i]);
+            // (i + 1) again just so the list shows "1., 2., 3." instead
+            // of starting at 0 - purely cosmetic, doesn't affect the
+            // actual index being read.
+        }
+    }
+    
+  
 
 }
