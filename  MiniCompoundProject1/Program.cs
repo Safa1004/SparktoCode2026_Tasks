@@ -194,8 +194,31 @@ internal class Program
             // below this line runs. no point asking for a deposit
             // amount if we don't even know which account to add it to.
         }
-        Console.Write("Enter deposit amount: ");
-        double amount = double.Parse(Console.ReadLine());
+        // new fix: wrapping the amount parse in try-catch, same pattern as
+        // AddAccount - protects against someone typing "twenty" instead
+        // of an actual number
+        double amount;
+        try
+        {
+            Console.Write("Enter deposit amount: ");
+            amount = double.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Error: invalid amount entered.");
+            return;
+        }
+        // new fix : rejecting anything that isn't strictly positive
+        // using  (<= )0 catches BOTH zero and negative numbers in one check
+        
+        // a deposit of 0 doesn't make sense either (nothing actually happens)
+        // so it's blocked along with negatives
+        if (amount <= 0)
+        {
+            Console.WriteLine("Error: deposit amount must be positive.");
+            return;
+        }
+
         // foundIndex is the SAME index across all 3 lists, so I use
         // it here to update the correct balance 
         balances[foundIndex] = balances[foundIndex] + amount;
