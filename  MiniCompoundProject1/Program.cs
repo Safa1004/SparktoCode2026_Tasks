@@ -244,8 +244,18 @@ internal class Program
             Console.WriteLine("Error: account number not found.");
             return;
         }
-        Console.Write("Enter withdrawal amount: ");
-        double amount = double.Parse(Console.ReadLine());
+        //fixes:  same try-catch pattern as Deposit
+        double amount;
+        try
+        {
+            Console.Write("Enter withdrawal amount: ");
+            amount = double.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Error: invalid amount entered.");
+            return;
+        }
         // this is the new part compared to Deposit  
         // I can't just take the money out blindly, I have to check the account actually
         // HAS enough balance to cover it first.
