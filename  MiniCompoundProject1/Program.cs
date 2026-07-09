@@ -58,6 +58,9 @@ internal class Program
                     CloseAccount();
                     break;
                 case 8:
+                    SearchByCustomerName();
+                    break;
+                case 9:
                     exitApp = true;
                     Console.WriteLine("Thank you for banking with Spark Bank. Goodbye!");
                     break;
@@ -321,6 +324,48 @@ internal class Program
         Console.WriteLine("Account closed successfully.");
     }
     
+    //Search Accounts by Customer Name function 
+    public static void SearchByCustomerName()
+    {
+        Console.Write("Enter customer name to search: ");
+        string searchName = Console.ReadLine();
+        // instead of one "foundIndex" variable like before, I'm using a
+        // counter to keep track of how many matches were found. 
+        // since there could be zero, one, or several
+        int matchesFound = 0;
+        Console.WriteLine("----- Search Results -----");
+        for (int i = 0; i < customerNames.Count; i++)
+        {
+            // checking EVERY account, not stopping once something matches -
+            // this is the key difference from the account-number searches.
+            // there, I could safely assume only one match existed. here,
+            // I can't assume that, so the loop has to run all the way
+            // through every single time.
+            if (customerNames[i] == searchName)
+            {
+                Console.WriteLine(customerNames[i] + " | Acc#: " + accountNumbers[i] + " | Balance: " + balances[i]);
+                matchesFound = matchesFound + 1;
+                // counting up each time I print a match, so afterward I
+                // know whether anything was actually found at all
+            }
+            // if the loop finished and matchesFound is still 0, nothing ever
+            // matched - only way to know that is by checking this counter
+            // after the loop is done, since I never had a single "foundIndex"
+            // to check against -1 this time.
+            if (matchesFound == 0)
+            {
+                Console.WriteLine("No accounts found under that name.");
+            }
+        }
+
+        
+        
+        
+        
+        
+    }
+    
+   
 
 
 
