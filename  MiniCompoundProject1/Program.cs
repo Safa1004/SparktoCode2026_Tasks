@@ -5,7 +5,7 @@ internal class Program
     
     // moving the 3 lists OUTSIDE of Main, straight into the class itself, and marking them "static"
     // why: if AddAccount() is going to be its own separate function,
-    // it needs to be able to reach these lists too - not just Main
+    // it needs to be able to reach these lists too. ( not just Main)
     // if the lists stayed inside Main, AddAccount() wouldn't be able
     // to see them at all. making them static + class-level means
     // EVERY function in this class shares the exact same lists,
@@ -96,7 +96,7 @@ internal class Program
     // Add Account" out into its own function
     // it's "void" because it doesn't need to return something 
     // it takes NO parameters, because it doesn't need any info
-    // passed in - it asks the console directly for whatever it
+    // passed in and it asks the console directly for whatever it
     public static void AddAccount()
     {
         // gather customer info 
@@ -121,7 +121,7 @@ internal class Program
 
         if (existingIndex != -1)
         {
-            // if not ewual to -1 so this means "if it WAS found"
+            // if not equal to -1 so this means "if it WAS found"
             // (the opposite of every other function's == -1 check, since
             // here finding a match is the BAD outcome, not the good one)
             Console.WriteLine("Error: that account number is already in use.");
@@ -327,8 +327,8 @@ internal class Program
         }
         
         // finding the receiver - this needs its OWN separate loop and its
-        // OWN separate variable, because I can't reuse senderIndex for
-        // this - they're two different searches for two different account
+        // OWN separate variable, because I can't reuse senderIndex for this 
+        // they're two different searches for two different account
         // numbers, and I need both results at the same time later.
         int receiverIndex = -1;
         for (int i = 0; i < accountNumbers.Count; i++)
