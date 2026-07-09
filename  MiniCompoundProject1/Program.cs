@@ -39,6 +39,9 @@ internal class Program
                     WithdrawMoney();
                     break;
                 case 4:
+                    ShowBalance();
+                    break;
+                case 5:
                     exitApp = true;
                     Console.WriteLine("Thank you for banking with Spark Bank. Goodbye!");
                     break;
@@ -157,6 +160,34 @@ internal class Program
         Console.WriteLine("Withdrawal successful. New balance: " + balances[foundIndex]);
 
     }
-    
+    //Show Balance function 
+    public static void ShowBalance()
+    {
+        Console.Write("Enter account number: ");
+        string accNumber = Console.ReadLine();
+        // same search pattern as Deposit and Withdraw # by now this
+        int foundIndex = -1;
+        for (int i = 0; i < accountNumbers.Count; i++)
+        {
+            if (accountNumbers[i] == accNumber)
+            {
+                foundIndex = i;
+            }
+        }
+
+        if (foundIndex == -1)
+        {
+            Console.WriteLine("Error: account number not found.");
+            return;
+        }
+        // nothing gets changed here - just reading the 3 lists at
+        // foundIndex and printing them out together
+        // the matching name, account number, and balance all at once
+        Console.WriteLine("Customer: " + customerNames[foundIndex]);
+        Console.WriteLine("Account Number: " + accountNumbers[foundIndex]);
+        Console.WriteLine("Balance: " + balances[foundIndex]);
+        
+    }
+   
 
 }
