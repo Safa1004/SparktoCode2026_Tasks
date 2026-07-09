@@ -20,8 +20,8 @@ internal class Program
 
         while (!exitApp)
         {
-            // !exitApp means "while exitApp is NOT true" - so this
-            // loop keeps repeating for as long as exitApp is false.
+            // !exitApp means "while exitApp is NOT true". 
+            // so this loop keeps repeating for as long as exitApp is false.
             Console.WriteLine("\n===== Welcome to Spark Bank =====");
             Console.WriteLine("1. Add New Account");
             Console.WriteLine("2. Deposit Money");
@@ -31,9 +31,25 @@ internal class Program
             Console.WriteLine("6. List All Accounts");
             Console.WriteLine("7. Close an Account");
             Console.WriteLine("8. Search Accounts by Customer Name");
+            Console.WriteLine("9. Find Richest Customer");
             Console.WriteLine("10. Exit");
             Console.Write("Choose an option: ");
-            int choice = int.Parse(Console.ReadLine());
+            // wrapping the parse in try-catch now instead of letting it crash
+            // the whole program the moment someone types a letter instead of a number
+            int choice;
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter a number from 1 to 10.");
+                continue;
+                // continue sends control straight back to the TOP of the
+                // while loop and skips the switch entirely and just reprints the menu again
+                
+            }
+            
             switch (choice)
             {
                 case 1:
@@ -61,11 +77,14 @@ internal class Program
                     SearchByCustomerName();
                     break;
                 case 9:
+                    FindRichestCustomer();
+                    break;
+                case 10:
                     exitApp = true;
                     Console.WriteLine("Thank you for banking with Spark Bank. Goodbye!");
                     break;
                 default:
-                    Console.WriteLine("Invalid option, please choose between 1 and 3.");
+                    Console.WriteLine("Invalid option, please choose between 1 and 10.");
                     break;
 
             }
@@ -107,7 +126,7 @@ internal class Program
         string accNumber = Console.ReadLine();
         // I need to know WHICH index this account lives at, because
         // that same index is what I'll use to update balances.
-        // starting foundIndex at -1 as a "not found yet" marker -
+        // starting foundIndex at -1 as a "not found yet" marker 
         // -1 can never be a real list index, so it's a safe signal.
         int foundIndex = -1;
         for (int i = 0; i < accountNumbers.Count; i++)
@@ -162,8 +181,8 @@ internal class Program
         }
         Console.Write("Enter withdrawal amount: ");
         double amount = double.Parse(Console.ReadLine());
-        // this is the new part compared to Deposit - I can't just take
-        // the money out blindly, I have to check the account actually
+        // this is the new part compared to Deposit  
+        // I can't just take the money out blindly, I have to check the account actually
         // HAS enough balance to cover it first.
         if (amount > balances[foundIndex])
         {
@@ -173,8 +192,8 @@ internal class Program
             // happens - the balance stays untouched if there isn't
             // enough money.
         }
-        // only reaches here if the amount is valid (not more than what's
-        // in the account) (now it's safe to actually subtract)
+        // only reaches here if the amount is valid (not more than what's in the account) 
+        // (now it's safe to actually subtract)
         balances[foundIndex] = balances[foundIndex] - amount;
         Console.WriteLine("Withdrawal successful. New balance: " + balances[foundIndex]);
 
@@ -352,16 +371,50 @@ internal class Program
             // matched - only way to know that is by checking this counter
             // after the loop is done, since I never had a single "foundIndex"
             // to check against -1 this time.
-            if (matchesFound == 0)
+        }
+        if (matchesFound == 0)
+        {
+            Console.WriteLine("No accounts found under that name.");
+        }
+        
+    }
+    // Find Richest Customer function 
+    public static void FindRichestCustomer()
+    {
+        // edge case first, same as List All Accounts 
+        // can't find a richest customer if there are no customers at all
+        if (customerNames.Count == 0)
+        {
+            Console.WriteLine("There are no accounts yet.");
+            return;
+        }
+        // starting by ASSUMING the first account (index 0) is the
+        // richest, just as a starting point to compare everyone else against.
+        // this isn't a real answer yet,  it's just where the comparison begins.
+        int richestIndex = 0;
+        // starting the loop at i = 1, NOT i = 0, on purpose 
+        // I already (used) index 0 as my starting assumption above 
+        // so there's no point comparing it against itself
+        for (int i = 1; i < balances.Count; i++)
+        {
+            // comparing this account's balance against the best one
+            // found SO FAR (not against the original index 0 every time
+            // richestIndex updates as we go, so this comparison
+            // is always against the current leader)
+            if (balances[i] > balances[richestIndex])
             {
-                Console.WriteLine("No accounts found under that name.");
+                richestIndex = i;
+                // found someone richer - update richestIndex to point
+                // at THIS account instead. the next loop pass will now
+                // compare against this new leader.
             }
         }
+        // by the time the loop finishes, richestIndex points at whichever
+        // account had the highest balance out of everyone checked
+        Console.WriteLine("Richest customer: " + customerNames[richestIndex]);
+        Console.WriteLine("Account Number: " + accountNumbers[richestIndex]);
+        Console.WriteLine("Balance: " + balances[richestIndex]);
 
-        
-        
-        
-        
         
     }
     
