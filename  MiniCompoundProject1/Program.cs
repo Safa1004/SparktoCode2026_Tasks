@@ -105,10 +105,52 @@ internal class Program
 
         Console.Write("Enter account number: ");
         string accountNumber = Console.ReadLine();
-
-        Console.Write("Enter starting balance: ");
-        double startingBalance = double.Parse(Console.ReadLine());
         
+        // new fix : checking if this account number already exists BEFORE
+        // asking for anything else,  same search pattern I've used in
+        // every other function, just used here to REJECT a duplicate
+        // instead of finding something to update.
+        int existingIndex = -1;
+        for (int i = 0; i < accountNumbers.Count; i++)
+        {
+            if (accountNumbers[i] == accountNumber)
+            {
+                existingIndex = i;
+            }
+        }
+
+        if (existingIndex != -1)
+        {
+            // if not ewual to -1 so this means "if it WAS found"
+            // (the opposite of every other function's == -1 check, since
+            // here finding a match is the BAD outcome, not the good one)
+            Console.WriteLine("Error: that account number is already in use.");
+            return;
+            // stop here don't even ask for a starting balance if the
+            // account number is no good
+        }
+        // new fix : wrapping the balance parse in try-catch, same pattern as
+        // the menu fix - so typing "string" here doesn't crash the app
+        double startingBalance;
+        
+        try
+        {
+            Console.Write("Enter starting balance: ");
+            startingBalance = double.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Error: invalid amount entered. Account not created.");
+            return;
+        }
+        // new fix : rejecting a negative starting balance - can be 0 (opening
+        // an account with no money yet is fine) but not below 0
+        if (startingBalance < 0)
+        {
+            Console.WriteLine("Error: initial deposit cannot be negative.");
+            return;
+        }
+        // only reaches here if: account number is unique, balance parsed
         // .Add() puts the new value onto the end of the list
         // adding to all 3 lists right after each other, in the same order 
         // so they stay the same length and stay lined up
