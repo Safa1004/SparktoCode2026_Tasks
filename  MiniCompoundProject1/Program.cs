@@ -2,14 +2,25 @@
 
 
 
-class Program
+
+internal class Program 
+
 {
+    
+    // moving the 3 lists OUTSIDE of Main, straight into the class itself, and marking them "static"
+    // why: if AddAccount() is going to be its own separate function,
+    // it needs to be able to reach these lists too - not just Main
+    // if the lists stayed inside Main, AddAccount() wouldn't be able
+    // to see them at all. making them static + class-level means
+    // EVERY function in this class shares the exact same lists,
+    // no need to pass them around as parameters.
+    public static List<string> customerNames = new List<string>();
+    public static List<string> accountNumbers = new List<string>();
+    public static List<double> balances = new List<double>();
+    
     static void Main(string[] args)
     { 
-        //Store more than one customer (list)
-        List<string> customerNames = new List<string>();
-        List<string> accountNumbers = new List<string>();
-        List<double> balances = new List<double>();
+        
         
         //Add more than one account in the same run
         //let the user add however many accounts they want, then print all of them at the end
@@ -22,23 +33,8 @@ class Program
             // numberOfAccounts times. i counts 0, 1, 2... up to
             // (numberOfAccounts - 1).
             Console.WriteLine("\n--- Account " + (i + 1) + " ---");
-            //Gathering customer info
-            Console.Write("Enter customer name: ");
-            string customerName = Console.ReadLine();
-
-            Console.Write("Enter account number: ");
-            string accountNumber = Console.ReadLine();
-
-            Console.Write("Enter starting balance: ");
-            double startingBalance = double.Parse(Console.ReadLine());
+            AddAccount(); // calling the function 
             
-            // .Add() puts the new value onto the end of the list
-            // adding to all 3 lists right after each other, in the same order 
-            // so they stay the same length and stay lined up
-            // repeats 
-            customerNames.Add(customerName);
-            accountNumbers.Add(accountNumber);
-            balances.Add(startingBalance);
             
             
         }
@@ -54,7 +50,35 @@ class Program
             // customerNames[i], accountNumbers[i], balances[i] - same
             // index i pulls the matching piece out of each list, so
             // this line prints one full account per loop pass.
+            
         }
+        // Add Account" out into its own function
+        // it's "void" because it doesn't need to return something 
+        // it takes NO parameters, because it doesn't need any info
+        // passed in - it asks the console directly for whatever it
+        public static void AddAccount()
+        {
+            // gather customer info 
+            Console.Write("Enter customer name: ");
+            string customerName = Console.ReadLine();
+
+            Console.Write("Enter account number: ");
+            string accountNumber = Console.ReadLine();
+
+            Console.Write("Enter starting balance: ");
+            double startingBalance = double.Parse(Console.ReadLine());
+            
+            // .Add() puts the new value onto the end of the list
+            // adding to all 3 lists right after each other, in the same order 
+            // so they stay the same length and stay lined up
+
+            customerNames.Add(customerName);
+            accountNumbers.Add(accountNumber);
+            balances.Add(startingBalance);
+            Console.WriteLine("Account created successfully!");
+            
+        }
+
         
         
         
