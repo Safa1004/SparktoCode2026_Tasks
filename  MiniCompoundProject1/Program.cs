@@ -18,40 +18,38 @@ internal class Program
     public static List<string> accountNumbers = new List<string>();
     public static List<double> balances = new List<double>();
     
-    static void Main(string[] args)
+    public static void Main(string[] args)
     { 
-        
-        
-        //Add more than one account in the same run
-        //let the user add however many accounts they want, then print all of them at the end
-        Console.Write("How many accounts do you want to add? ");
-        int numberOfAccounts = int.Parse(Console.ReadLine());
+        bool exitApp = false;
 
-        for (int i = 0; i < numberOfAccounts; i++)
+        while (!exitApp)
         {
-            // this whole block repeats once per account, exactly
-            // numberOfAccounts times. i counts 0, 1, 2... up to
-            // (numberOfAccounts - 1).
-            Console.WriteLine("\n--- Account " + (i + 1) + " ---");
-            AddAccount(); // calling the function 
-            
-            
+            // !exitApp means "while exitApp is NOT true" - so this
+            // loop keeps repeating for as long as exitApp is false.
+            Console.WriteLine("\n===== Welcome to Spark Bank =====");
+            Console.WriteLine("1. Add New Account");
+            Console.WriteLine("2. Exit");
+            Console.Write("Choose an option: ");
+            int choice = int.Parse(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    AddAccount();
+                    break;
+                case 2:
+                    exitApp = true;
+                    Console.WriteLine("Thank you for banking with Spark Bank. Goodbye!");
+                    break;
+                default:
+                    Console.WriteLine("Invalid option, please choose between 1 and 2.");
+                    break;
+
+            }
             
         }
-        // now printing ALL accounts, not just the last one entered
-        // this needs its OWN loop, separate from the one above,
-        // because by this point all the data is already collected -
-        // I'm just reading it back out of the lists.
-        Console.WriteLine("\n--- All Accounts ---");
-        for (int i = 0; i < customerNames.Count; i++)
-        {
-            Console.WriteLine((i + 1) + ". " + customerNames[i] + " | Acc#: " + accountNumbers[i] + " | Balance: " +
-                              balances[i]);
-            // customerNames[i], accountNumbers[i], balances[i] - same
-            // index i pulls the matching piece out of each list, so
-            // this line prints one full account per loop pass.
-            
-        }
+        
+        
+        
         // Add Account" out into its own function
         // it's "void" because it doesn't need to return something 
         // it takes NO parameters, because it doesn't need any info
