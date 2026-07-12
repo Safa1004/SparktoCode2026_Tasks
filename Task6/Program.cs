@@ -216,7 +216,27 @@ class Program
         
        
 
-        
+       
         
     }
+    // ----- case methods, built one at a time -----
+    static void ViewAccountDetails() { }
+    static void UpdateStudentAddress() { }
+    static void MakeDeposit() { }
+    static void MakeWithdrawal() { }
+    static void ViewProductDetails() { }
+    static void RegisterStudent() { }
+    static void CompareAccountBalances() { }
+    static void RestockProduct() { }
+    static void TransferBetweenAccounts() { }
+    static void UpdateStudentGrade() { }
+    static void StudentReportCard() { }
+    static void AccountHealthStatus() { }
+    static void BulkSale() { }
+    static void ScholarshipEligibility() { }
+    static void FullBalanceTopUp() { }
+    static void QuickAccountOpening() { }
+    static void TotalStudentsCounter() { }
+    static void OverdrawnAccountCheck() { }
+    static void SetStudentPin() { }
 }
