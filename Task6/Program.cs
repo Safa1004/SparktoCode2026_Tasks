@@ -99,6 +99,11 @@ class Product
     {
         StockQuantity += quantity;
     }
+
+    public double GetInventoryValue()
+    {
+        return Price * StockQuantity;
+    }
     
 }
 
