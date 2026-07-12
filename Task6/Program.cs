@@ -17,6 +17,7 @@ class BankAccount
    public void Deposit(double amount)
    {
        Balance += amount;
+       SendEmail();
        
    }
    // Withdraw - only goes through if Balance can actually cover it
@@ -26,11 +27,13 @@ class BankAccount
        {
            Balance -= amount;
        }
+       SendEmail();
        
    }
-   
+   //print info first then return balance 
    public double CheckBalance()
    {
+       PrintInformation();
        return Balance;
    }
    // private - can only be called from inside this class 
