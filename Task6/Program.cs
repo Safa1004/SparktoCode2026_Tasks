@@ -94,6 +94,11 @@ class Product
             Console.WriteLine("Not enough stock to complete this sale.");
         }
     }
+
+    public void Restock(int quantity)
+    {
+        StockQuantity += quantity;
+    }
     
 }
 
