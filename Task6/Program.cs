@@ -123,8 +123,23 @@ class Product
 
 class Program
 {
+    // putting the 6 objects as static fields on Program -- static cuz this feild field belongs to the Program class itself
+    //every case method needs to reach these objects
+    //object initializer syntax cuz it's shorthand that creates the object AND sets its properties all in one statement
+    static  BankAccount account1 = new BankAccount { AccountNumber = 1163, HolderName = "Safa", Balance = 100000 };
+    static BankAccount account2 = new BankAccount { AccountNumber = 15203, HolderName = "Marwa", Balance = 50000 };
+
+    static Student student1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
+    static Student student2 = new Student { Name = "Ahmed", Address = "Muscat", Grade = 70 };
+
+    static Product product1 = new Product { ProductName = "Wireless Mouse", Price = 5.500, StockQuantity = 50 };
+    static Product product2 = new Product { ProductName = "Mechanical Keyboard", Price = 15.750, StockQuantity = 20 };
     static void Main(string[] args)
     {
+        
+       
+
+        
         
     }
 }
