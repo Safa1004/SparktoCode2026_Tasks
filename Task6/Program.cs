@@ -82,6 +82,18 @@ class Product
     public string ProductName { get; set; }
     public double Price { get; set; }
     public int StockQuantity { get; set; }
+
+    public void Sell(int quantity)
+    {
+        if (quantity <= StockQuantity)
+        {
+            StockQuantity -= quantity;
+        }
+        else
+        {
+            Console.WriteLine("Not enough stock to complete this sale.");
+        }
+    }
     
 }
 
