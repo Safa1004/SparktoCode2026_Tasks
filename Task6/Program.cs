@@ -598,6 +598,7 @@ class Program
        // ternary operator - shorthand for if/else that returns a value
        // syntax: "condition ? valueIfTrue : valueIfFalse"
        // same as writing: if (source == 1) sourceAccount = account1; else sourceAccount = account2;
+       // ? if the condition true // : means otherwise
        BankAccount sourceAccount = (source == 1) ? account1 : account2;
        BankAccount destinationAccount = (destination == 1) ? account1 : account2;
        // checking balance BEFORE touching anything
@@ -614,7 +615,60 @@ class Program
    
        
    }
-    static void UpdateStudentGrade() { }
+   
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 10 - Update Student Grade (Validated)
+   static void UpdateStudentGrade()
+   {
+       Console.Write("Choose student (1 or 2): ");
+       int pick;
+       try
+       {
+           pick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+       if (pick != 1 && pick != 2)
+       {
+           Console.WriteLine("Invalid student choice.");
+           return;
+       }
+       int newGrade;
+       try
+       {
+           Console.Write("Enter new grade: ");
+           newGrade = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Error: grade must be a valid number. No change made.");
+           return;
+       }
+       // second validation layer - parsing succeeded, but the NUMBER itself
+       // could still be garbage like -5 or 150, so this check catches that
+       if (newGrade < 0 || newGrade > 100)
+       {
+           Console.WriteLine("Error: grade must be between 0 and 100. No change made.");
+           return;
+       }
+       // only reaches here if both checks passed - now it's safe to update
+       if (pick == 1)
+       {
+           student1.Grade = newGrade; // update it with the new garde 
+           Console.WriteLine(student1.Name + "'s grade updated to " + student1.Grade);
+       }
+       else
+       {
+           student2.Grade = newGrade;
+           Console.WriteLine(student2.Name + "'s grade updated to " + student2.Grade);
+       }
+
+
+       
+   }
     static void StudentReportCard() { }
     static void AccountHealthStatus() { }
     static void BulkSale() { }
