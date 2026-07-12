@@ -665,11 +665,43 @@ class Program
            student2.Grade = newGrade;
            Console.WriteLine(student2.Name + "'s grade updated to " + student2.Grade);
        }
-
-
        
    }
-    static void StudentReportCard() { }
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 11 - Student Report Card
+   // pick, then print all 3 properties plus a Pass/Fail label I calculate myself 
+
+   static void StudentReportCard()
+   {
+       Console.Write("Choose student (1 or 2): ");
+       int pick;
+       try
+       {
+           pick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+
+       if (pick != 1 && pick != 2)
+       {
+           Console.WriteLine("Invalid student choice.");
+           return;
+       }
+       // grabbing the right student object first, so the print logic below
+       // only has to be written once instead of duplicated per student
+       // same ternary operator (shorter)
+       Student chosenStudent = (pick == 1) ? student1 : student2;
+       string status = (chosenStudent.Grade >= 60) ? "Pass" : "Fail";
+       
+       Console.WriteLine("----- Report Card -----");
+       Console.WriteLine("Name: " + chosenStudent.Name);
+       Console.WriteLine("Address: " + chosenStudent.Address);
+       Console.WriteLine("Grade: " + chosenStudent.Grade);
+       Console.WriteLine("Status: " + status);
+   }
     static void AccountHealthStatus() { }
     static void BulkSale() { }
     static void ScholarshipEligibility() { }
