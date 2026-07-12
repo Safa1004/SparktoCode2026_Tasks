@@ -286,7 +286,8 @@ class Program
         if (pick == 1)
         {
             student1.Address = newAddress;
-            Console.WriteLine("Address updated. " + student1.Name + "'s new address: " + student1.Address);
+            Console.WriteLine("Address updated. " + student1.Name + "'s new address: " + student1.Address); 
+            //adress is the property within Student Class
         }
         else if (pick == 2)
         {
@@ -341,7 +342,48 @@ class Program
             Console.WriteLine(account2.HolderName + "'s updated balance: " + account2.Balance);
         }
     }
-    static void MakeWithdrawal() { }
+
+    static void MakeWithdrawal()
+    {
+        Console.Write("Choose account (1 or 2): ");
+        int pick;
+        try
+        {
+            pick = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid input.");
+            return;
+        }
+
+        if (pick != 1 && pick != 2)
+        {
+            Console.WriteLine("Invalid account choice.");
+            return;
+        }
+        double amount;
+        try
+        {
+            Console.Write("Enter withdrawal amount: ");
+            amount = double.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid amount entered.");
+            return;
+        }
+        if (pick == 1)
+        {
+            account1.Withdraw(amount);
+            Console.WriteLine("Updated balance: " + account1.Balance);
+        }
+        else
+        {
+            account2.Withdraw(amount);
+            Console.WriteLine("Updated balance: " + account2.Balance);
+        }
+    }
     static void ViewProductDetails() { }
     static void RegisterStudent() { }
     static void CompareAccountBalances() { }
