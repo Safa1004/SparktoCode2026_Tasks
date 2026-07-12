@@ -12,7 +12,15 @@ class BankAccount
    public int AccountNumber { get; set; }
    public string HolderName { get; set; } 
    public double Balance { get; set; }
-  
+   
+   // Deposit - just adds the amount, then fires off the email notification
+   public void Deposit(double amount)
+   {
+       Balance += amount;
+       SendEmail();
+   }
+   
+ 
    
 }
 class Program
