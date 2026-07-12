@@ -298,7 +298,49 @@ class Program
             Console.WriteLine("Invalid student choice.");
         }
     }
-    static void MakeDeposit() { }
+
+    static void MakeDeposit()
+    {
+        Console.Write("Choose account (1 or 2): ");
+        int pick;
+        try
+        {
+            pick = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid input.");
+            return;
+        }
+        // reject bad account choice BEFORE asking for an amount - no point
+        // typing a deposit value for an account that doesn't exist
+        if (pick != 1 && pick != 2)
+        {
+            Console.WriteLine("Invalid account choice.");
+            return;
+        }
+        double amount;
+        try
+        {
+            Console.Write("Enter deposit amount: ");
+            amount = double.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid amount entered.");
+            return;
+        }
+        if (pick == 1)
+        {
+            account1.Deposit(amount);
+            Console.WriteLine(account1.HolderName + "'s updated balance: " + account1.Balance);
+        }
+        else
+        {
+            account2.Deposit(amount);
+            Console.WriteLine(account2.HolderName + "'s updated balance: " + account2.Balance);
+        }
+    }
     static void MakeWithdrawal() { }
     static void ViewProductDetails() { }
     static void RegisterStudent() { }
