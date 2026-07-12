@@ -201,6 +201,13 @@ class Program
                     Console.WriteLine("Invalid option, please choose between 1 and 20.");
                     break;
             }
+            // new fix : pause + clear after every case EXCEPT exit 
+            if (!exitApp)
+            {
+                Console.Write("\npress any key to continue...");
+                Console.ReadKey();
+                Console.Clear();
+            }
            
             
             
