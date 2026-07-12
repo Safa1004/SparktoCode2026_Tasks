@@ -220,6 +220,8 @@ class Program
         
     }
     // ----- case methods, built one at a time -----
+    
+    //apply case 1 requirements 
     static void ViewAccountDetails()
     {
         Console.Write("Choose account (1 or 2): ");
