@@ -93,15 +93,18 @@ class Product
         {
             Console.WriteLine("Not enough stock to complete this sale.");
         }
+        LogTransaction();
     }
 
     public void Restock(int quantity)
     {
         StockQuantity += quantity;
+        LogTransaction();
     }
 
     public double GetInventoryValue()
     {
+        PrintDetails();
         return Price * StockQuantity;
     }
     
@@ -114,7 +117,7 @@ class Product
     {
         Console.WriteLine("[Transaction logged for " + ProductName + "]");
     }
-    
+   
 }
 
 
