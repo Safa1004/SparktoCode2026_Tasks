@@ -413,7 +413,44 @@ class Program
             Console.WriteLine("Invalid product choice.");
         }
     }
-    static void RegisterStudent() { }
+    // email is private on the Student class, so the ONLY way to get a value
+   // into it from here is through Register() I can't do something like student1.email
+   // aslo in the case it says " you cannot assign it directly. Print a confirmation message that
+   // does NOT reveal the email anywhere."
+   //so I'm only printing the student's Name, never the email variable itself
+   static void RegisterStudent()
+   {
+       Console.Write("Choose student (1 or 2): ");
+       int pick;
+       try
+       {
+           pick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+
+       if (pick != 1 && pick != 2)
+       {
+           Console.WriteLine("Invalid student choice.");
+           return;
+       }
+       Console.Write("Enter email: ");
+       string enteredEmail = Console.ReadLine();
+       if (pick == 1)
+       {
+           student1.Register(enteredEmail);
+           Console.WriteLine(student1.Name + " has been registered successfully.");
+       }
+       else
+       {
+           student2.Register(enteredEmail);
+           Console.WriteLine(student2.Name + " has been registered successfully.");
+       }
+
+   }
     static void CompareAccountBalances() { }
     static void RestockProduct() { }
     static void TransferBetweenAccounts() { }
