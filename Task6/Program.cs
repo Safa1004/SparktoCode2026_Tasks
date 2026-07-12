@@ -77,6 +77,13 @@ class Student
     }
 }
 
+class Product
+{
+    public string ProductName { get; set; }
+    public double Price { get; set; }
+    public int StockQuantity { get; set; }
+    
+}
 
 
 class Program
