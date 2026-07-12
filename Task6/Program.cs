@@ -17,9 +17,17 @@ class BankAccount
    public void Deposit(double amount)
    {
        Balance += amount;
-       SendEmail();
+       
    }
-   
+   // Withdraw - only goes through if Balance can actually cover it
+   public void Withdraw(double amount)
+   {
+       if (amount <= Balance)
+       {
+           Balance -= amount;
+       }
+       
+   }
  
    
 }
