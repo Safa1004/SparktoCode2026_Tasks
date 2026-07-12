@@ -266,7 +266,8 @@ class Program
     }
     }
 
-    
+  ////////////////////////////////////////////////////////////////////////////////////////
+  // Case 2 - Update Student Address 
     static void UpdateStudentAddress()
     {
         Console.Write("Choose student (1 or 2): ");
@@ -299,6 +300,8 @@ class Program
             Console.WriteLine("Invalid student choice.");
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////
+    // // Case 3 - Make a Deposit
 
     static void MakeDeposit()
     {
@@ -342,6 +345,9 @@ class Program
             Console.WriteLine(account2.HolderName + "'s updated balance: " + account2.Balance);
         }
     }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////
+    // Case 4 - Make a Withdrawal
 
     static void MakeWithdrawal()
     {
@@ -384,6 +390,9 @@ class Program
             Console.WriteLine("Updated balance: " + account2.Balance);
         }
     }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////
+    // Case 5 - View Product Details
 
     static void ViewProductDetails()
     {
@@ -413,6 +422,9 @@ class Program
             Console.WriteLine("Invalid product choice.");
         }
     }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////
+    // Case 6 - Register a Student
     // email is private on the Student class, so the ONLY way to get a value
    // into it from here is through Register() I can't do something like student1.email
    // aslo in the case it says " you cannot assign it directly. Print a confirmation message that
@@ -451,7 +463,24 @@ class Program
        }
 
    }
-    static void CompareAccountBalances() { }
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 7 - Compare Two Account Balances
+   static void CompareAccountBalances()
+   {
+       //if-else chain to figure out which one's higher (or if they're equal)
+       if (account1.Balance > account2.Balance)
+       {
+           Console.WriteLine(account1.HolderName + " has more money. Balance: " + account1.Balance);
+       }
+       else if (account2.Balance > account1.Balance)
+       {
+           Console.WriteLine(account2.HolderName + " has more money. Balance: " + account2.Balance);
+       }
+       else
+       {
+           Console.WriteLine("Both accounts have equal balances: " + account1.Balance);
+       }
+   }
     static void RestockProduct() { }
     static void TransferBetweenAccounts() { }
     static void UpdateStudentGrade() { }
