@@ -541,7 +541,79 @@ class Program
            Console.WriteLine("Stock level: Well Stocked. Current stock: " + updatedStock);
        }
    }
-    static void TransferBetweenAccounts() { }
+   
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 9 - Transfer Between Accounts
+   // checking the balance FIRST, before calling Withdraw/Deposit at all
+   
+   static void TransferBetweenAccounts()
+   {
+       Console.Write("Choose source account (1 or 2): ");
+       int source;
+       try
+       {
+           source = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+       Console.Write("Choose destination account (1 or 2): ");
+       int destination;
+       try
+       {
+           destination = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+       // reject bad picks before even asking for an amount 
+       if ((source != 1 && source != 2) || (destination != 1 && destination != 2))
+       {
+           Console.WriteLine("Invalid account choice.");
+           return;
+       }
+       // transferring to yourself doesn't make sense
+       if (source == destination)
+       {
+           Console.WriteLine("Source and destination can't be the same account.");
+           return;
+       }
+       double amount;
+       try
+       {
+           Console.Write("Enter transfer amount: ");
+           amount = double.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid amount entered.");
+           return;
+       }
+       // grabbing the actual objects based on the picks, so I don't have
+       // to write 4 separate if/else branches below for every source/destination
+       // ternary operator - shorthand for if/else that returns a value
+       // syntax: "condition ? valueIfTrue : valueIfFalse"
+       // same as writing: if (source == 1) sourceAccount = account1; else sourceAccount = account2;
+       BankAccount sourceAccount = (source == 1) ? account1 : account2;
+       BankAccount destinationAccount = (destination == 1) ? account1 : account2;
+       // checking balance BEFORE touching anything
+       if (amount > sourceAccount.Balance)
+       {
+           Console.WriteLine("Transfer failed: insufficient balance in source account.");
+           return;
+       }
+       sourceAccount.Withdraw(amount);
+       destinationAccount.Deposit(amount);
+       Console.WriteLine("Transfer successful!");
+       Console.WriteLine(sourceAccount.HolderName + "'s new balance: " + sourceAccount.Balance);
+       Console.WriteLine(destinationAccount.HolderName + "'s new balance: " + destinationAccount.Balance);
+   
+       
+   }
     static void UpdateStudentGrade() { }
     static void StudentReportCard() { }
     static void AccountHealthStatus() { }
