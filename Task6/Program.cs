@@ -28,17 +28,23 @@ class BankAccount
        }
        
    }
+   
+   public double CheckBalance()
+   {
+       return Balance;
+   }
    // private - can only be called from inside this class 
    private void PrintInformation()
    {
        Console.WriteLine("Holder: " + HolderName + " | Balance: " + Balance);
    }
    
-
-   public double CheckBalance()
+   
+   private void SendEmail()
    {
-       return Balance;
+       Console.WriteLine("[Email notification sent to " + HolderName + "]");
    }
+   
  
    
 }
