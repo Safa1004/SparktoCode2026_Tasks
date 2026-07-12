@@ -702,7 +702,44 @@ class Program
        Console.WriteLine("Grade: " + chosenStudent.Grade);
        Console.WriteLine("Status: " + status);
    }
-    static void AccountHealthStatus() { }
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 12 - Account Health Status
+   static void AccountHealthStatus()
+   {
+       Console.Write("Choose account (1 or 2): ");
+       int pick;
+       try
+       {
+           pick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+
+       if (pick != 1 && pick != 2)
+       {
+           Console.WriteLine("Invalid account choice.");
+           return;
+       }
+       // same ternary operator (shorter)
+       BankAccount chosenAccount = (pick == 1) ? account1 : account2;
+       // 3-tier classification
+       // below 50 is Low, 50 up to 1000 is Healthy, above 1000 is Premium
+       if (chosenAccount.Balance < 50)
+       {
+           Console.WriteLine(chosenAccount.HolderName + "'s account status: Low Balance");
+       }
+       else if (chosenAccount.Balance <= 1000)
+       {
+           Console.WriteLine(chosenAccount.HolderName + "'s account status: Healthy");
+       }
+       else
+       {
+           Console.WriteLine(chosenAccount.HolderName + "'s account status: Premium");
+       }
+   }
     static void BulkSale() { }
     static void ScholarshipEligibility() { }
     static void FullBalanceTopUp() { }
