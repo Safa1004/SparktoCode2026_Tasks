@@ -28,6 +28,11 @@ class BankAccount
        }
        
    }
+
+   public double CheckBalance()
+   {
+       return Balance;
+   }
  
    
 }
