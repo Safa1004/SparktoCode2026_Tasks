@@ -384,7 +384,35 @@ class Program
             Console.WriteLine("Updated balance: " + account2.Balance);
         }
     }
-    static void ViewProductDetails() { }
+
+    static void ViewProductDetails()
+    {
+        Console.Write("Choose product (1 or 2): ");
+        int pick;
+        try
+        {
+            pick = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid input.");
+            return;
+        }
+        if (pick == 1)
+        {
+            double value = product1.GetInventoryValue();
+            Console.WriteLine("Total inventory value: " + value);
+        }
+        else if (pick == 2)
+        {
+            double value = product2.GetInventoryValue();
+            Console.WriteLine("Total inventory value: " + value);
+        }
+        else
+        {
+            Console.WriteLine("Invalid product choice.");
+        }
+    }
     static void RegisterStudent() { }
     static void CompareAccountBalances() { }
     static void RestockProduct() { }
