@@ -210,7 +210,7 @@ class Program
             }
            
             
-            
+           
 
         }
         
@@ -220,8 +220,82 @@ class Program
         
     }
     // ----- case methods, built one at a time -----
-    static void ViewAccountDetails() { }
-    static void UpdateStudentAddress() { }
+    static void ViewAccountDetails()
+    {
+        Console.Write("Choose account (1 or 2): ");
+        // same try-catch
+        int pick;
+        try
+        {
+            pick = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid input");
+            return; 
+        }
+         if (pick == 1)
+    {
+        account1.CheckBalance();
+        // not storing the return value in anything here since the task
+        // just wants us to DISPLAY it - CheckBalance already prints via
+        // PrintInformation() internally, so calling it alone is enough
+    }
+    else if (pick == 2)
+    {
+        account2.CheckBalance();
+    }
+    else
+    {
+        Console.WriteLine("Invalid account choice.");
+    }
+    if (pick == 1)
+    {
+        account1.CheckBalance();
+        //if 1 means go to object account 1 and check balance 
+    }
+    else if (pick == 2)
+    {
+        account2.CheckBalance();
+    }
+    else
+    {
+        Console.WriteLine("Invalid account choice.");
+    }
+    }
+
+    
+    static void UpdateStudentAddress()
+    {
+        Console.Write("Choose student (1 or 2): ");
+        int pick;
+        try
+        {
+            pick = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid input.");
+            return;
+        }
+        Console.Write("Enter new address: ");
+        string newAddress = Console.ReadLine();
+        //same if/else pattern and objects  
+        if (pick == 1)
+        {
+            student1.Address = newAddress;
+            Console.WriteLine("Address updated. " + student1.Name + "'s new address: " + student1.Address);
+        }
+        else if (pick == 2)
+        {
+            student2.Address = newAddress;
+            Console.WriteLine("Address updated. " + student2.Name + "'s new address: " + student2.Address);
+        }
+        else
+        {
+            Console.WriteLine("Invalid student choice.");
+        }
+    }
     static void MakeDeposit() { }
     static void MakeWithdrawal() { }
     static void ViewProductDetails() { }
