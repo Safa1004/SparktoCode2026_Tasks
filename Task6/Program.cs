@@ -105,6 +105,16 @@ class Product
         return Price * StockQuantity;
     }
     
+    private void PrintDetails()
+    {
+        Console.WriteLine("Product: " + ProductName + " | Price: " + Price + " | Stock: " + StockQuantity);
+    }
+    
+    private void LogTransaction()
+    {
+        Console.WriteLine("[Transaction logged for " + ProductName + "]");
+    }
+    
 }
 
 
