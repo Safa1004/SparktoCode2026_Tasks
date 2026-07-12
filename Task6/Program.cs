@@ -740,7 +740,61 @@ class Program
            Console.WriteLine(chosenAccount.HolderName + "'s account status: Premium");
        }
    }
-    static void BulkSale() { }
+   
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 13 - Bulk Sale With Revenue Calculation
+   // two branches here depending on stock:
+   // NOT enough -> calculate the shortfall and stop (don't touch anything)
+   // enough -> actually sell, then calculate revenue AFTER the sale goes through
+   static void BulkSale()
+   {
+       Console.Write("Choose product (1 or 2): ");
+       int pick;
+       try
+       {
+           pick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+
+       if (pick != 1 && pick != 2)
+       {
+           Console.WriteLine("Invalid product choice.");
+           return;
+       }
+       int quantity;
+       try
+       {
+           Console.Write("Enter quantity to sell: ");
+           quantity = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid quantity entered.");
+           return;
+       }
+       // same ternary operator (shorter) 
+       Product chosenProduct = (pick == 1) ? product1 : product2;
+       // checking stock BEFORE calling Sell() at all - I need to know which
+       // branch I'm in (short vs enough) before doing anything, since the
+       // "not enough" branch needs its own math and must NOT call Sell()
+       if (quantity > chosenProduct.StockQuantity)
+       {
+           int shortfall = quantity - chosenProduct.StockQuantity;
+           Console.WriteLine("Not enough stock. You need " + shortfall + " more unit(s) to fulfill this order.");
+           return;
+           // stopping here - task says "do not sell anything" if stock's short
+       }
+
+       // only reaches here if stock covers the order - safe to sell now
+       chosenProduct.Sell(quantity);
+       double revenue = quantity * chosenProduct.Price;
+       Console.WriteLine("Sale successful! Revenue from this sale: " + revenue);
+
+   }
     static void ScholarshipEligibility() { }
     static void FullBalanceTopUp() { }
     static void QuickAccountOpening() { }
