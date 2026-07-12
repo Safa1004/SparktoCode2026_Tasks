@@ -481,7 +481,66 @@ class Program
            Console.WriteLine("Both accounts have equal balances: " + account1.Balance);
        }
    }
-    static void RestockProduct() { }
+   
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 8 - Restock Product & Stock Level Check
+
+   static void RestockProduct()
+   {
+       Console.Write("Choose product (1 or 2): ");
+       int pick;
+       try
+       {
+           pick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+
+       if (pick != 1 && pick != 2)
+       {
+           Console.WriteLine("Invalid product choice.");
+           return;
+       }
+       int quantity;
+       try
+       {
+           Console.Write("Enter quantity to restock: ");
+           quantity = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid quantity entered.");
+           return;
+       }
+       int updatedStock;
+       if (pick == 1)
+       {
+           product1.Restock(quantity);
+           updatedStock = product1.StockQuantity;
+       }
+       else
+       {
+           product2.Restock(quantity);
+           updatedStock = product2.StockQuantity;
+       }
+       // 3-tier classification - below 10 is Low, 10 to 49 is Moderate,
+       // 50+ is Well Stocked 
+       if (updatedStock < 10)
+       {
+           Console.WriteLine("Stock level: Low. Current stock: " + updatedStock);
+       }
+       else if (updatedStock < 50)
+       {
+           Console.WriteLine("Stock level: Moderate. Current stock: " + updatedStock);
+       }
+       else
+       {
+           Console.WriteLine("Stock level: Well Stocked. Current stock: " + updatedStock);
+       }
+   }
     static void TransferBetweenAccounts() { }
     static void UpdateStudentGrade() { }
     static void StudentReportCard() { }
