@@ -79,6 +79,18 @@ class Student
     private string email;
     int age; // default access - no modifier = private-equivalent for class member
     
+    // new fix : static field - shared ACROSS all Student objects, not
+    // tied to any one instance.
+    // every time a new Student gets created this number goes up 
+    public static int totalStudents = 0;
+    
+    // new fix : constructor - the only reason I'm adding one here is so
+    // totalStudents++ runs automatically every time "new Student()" happens
+    public Student()
+    {
+        totalStudents++;
+    }
+    
     
     // Register - the ONLY way email gets a value from outside this class
     // takes the email in as a parameter, stores it in the private field
@@ -966,7 +978,12 @@ class Program
        newAccount.CheckBalance();
        
    }
-    static void TotalStudentsCounter() { }
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 17 - Total Students Counter [Static Fields & Methods]
+   static void TotalStudentsCounter()
+   {
+       
+   }
     static void OverdrawnAccountCheck() { }
     static void SetStudentPin() { }
 }
