@@ -15,6 +15,13 @@ class BankAccount
    public int AccountNumber { get; set; }
    public string HolderName { get; set; } 
    public double Balance { get; set; }
+   //--------------------------------
+   // new fix : empty constructor added back - needed because account1/account2
+   // use object initializer syntax ( new BankAccount { ... } ), which relies
+   // on a parameterless constructor existing. writing the parameterized one
+   // below on its own would delete that "free" one C# normally gives you
+   public BankAccount() { }
+   //--------------------------------
    
    // new fix: (case 16 [Parameterized Constructor])
    // parameterized constructor - takes all 3 values at once
@@ -921,8 +928,42 @@ class Program
    // Cases 16-19 - Own Research
    ////////////////////////////////////////////////////////////////////////////////////////
    // Case 16 - Quick Account Opening [Parameterized Constructor]
+   // Task specifically wants us to use ONLY the constructor 
+   // No separate property assignments after creating the object
+   // so all 3 values MUST go straight into the "new BankAccount(...)" call itself
    static void QuickAccountOpening()
    {
+       Console.Write("Enter account number: ");
+       int accNum;
+       try
+       {
+           accNum = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid account number.");
+           return;
+       }
+       Console.Write("Enter holder name: ");
+       string holderName = Console.ReadLine();
+
+       double startingBalance;
+       try
+       {
+           Console.Write("Enter starting balance: ");
+           startingBalance = double.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid balance.");
+           return;
+       }
+       // building the object with the parameterized constructor
+       // all 3 values passed in the SAME statement that creates it
+       // nothing set afterward like account1/account2 use object initializers for
+       BankAccount newAccount = new BankAccount(accNum, holderName, startingBalance);
+       Console.WriteLine("New account created!");
+       newAccount.CheckBalance();
        
    }
     static void TotalStudentsCounter() { }
