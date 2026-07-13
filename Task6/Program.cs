@@ -104,6 +104,23 @@ class Student
     }
     
     
+    // new fix : private backing field for the PIN 
+    // since the property itself can't read the value back out (no get)
+    // I still need somewhere to actually STORE the pin once it's set
+    // same idea as "email" above it - a private field the property
+    // writes into
+    private string pin;
+    
+    // new fix : write-only property (only has a set accessor) no get
+    //this means from OUTSIDE the class, you can WRITE to student PINs (student1.Pin = "1234")
+    //never read (get) it back (Console.WriteLine(student1.Pin)
+    // 'value' here its the keyword it outo holds whatever got nd assign it 
+    public string Pin
+    {
+        set { pin = value; }
+    }
+    
+    
     // Register - the ONLY way email gets a value from outside this class
     // takes the email in as a parameter, stores it in the private field
     // then triggers the same "notify" pattern as BankAccount's Deposit/Withdraw
@@ -1037,5 +1054,46 @@ class Program
            Console.WriteLine(chosenAccount.HolderName + "'s account is not overdrawn.");
        }
    }
-    static void SetStudentPin() { }
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 19 - Set Student Security PIN [Write-Only Property]
+   static void SetStudentPin()
+   {
+       Console.Write("Choose student (1 or 2): ");
+       int pick;
+       try
+       {
+           pick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+
+       if (pick != 1 && pick != 2)
+       {
+           Console.WriteLine("Invalid student choice.");
+           return;
+       }
+       Console.Write("Enter 4-digit PIN: ");
+       string enteredPin = Console.ReadLine();
+       // task says "4-digit PIN"
+       // so checking length is 4 and every character is a digit before accepting it
+       if (enteredPin.Length != 4 || !enteredPin.All(char.IsDigit)) //OR if any character isn't a number
+       {
+           Console.WriteLine("Error: PIN must be exactly 4 digits.");
+           return;
+       }
+       if (pick == 1)
+       {
+           student1.Pin = enteredPin;
+           Console.WriteLine("PIN set successfully for " + student1.Name);
+       }
+       else
+       {
+           student2.Pin = enteredPin;
+           Console.WriteLine("PIN set successfully for " + student2.Name);
+       }
+
+   }
 }
