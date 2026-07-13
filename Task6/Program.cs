@@ -862,10 +862,51 @@ class Program
            Console.WriteLine("Not eligible: balance is below 100.");
        }
 
-
        
    }
-    static void FullBalanceTopUp() { }
+   
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 15 - Full Balance Top-Up Flow
+   // It says in here: 
+   //Pick an account, check Balance.
+   //If below 50, auto-calculate the top-up needed to reach exactly 100, deposit it, print before/after.
+   //If already ≥ 50, say no top-up needed.
+   static void FullBalanceTopUp()
+   {
+       Console.Write("Choose account (1 or 2): ");
+       int pick;
+       try
+       {
+           pick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+
+       if (pick != 1 && pick != 2)
+       {
+           Console.WriteLine("Invalid account choice.");
+           return;
+       }
+       // same ternary operator (shorter) 
+       BankAccount chosenAccount = (pick == 1) ? account1 : account2;
+       if (chosenAccount.Balance < 50)
+       {
+           // grabbing the balance BEFORE Deposit() touches it
+           // once I call Deposit(), the old value is gone, so I need this snapshot now
+           double balanceBefore = chosenAccount.Balance;
+           double topUpAmount = 100 - chosenAccount.Balance; //how many needed to reach 100
+           chosenAccount.Deposit(topUpAmount);
+           Console.WriteLine("Balance before top-up: " + balanceBefore);
+           Console.WriteLine("Balance after top-up: " + chosenAccount.Balance);
+       }
+       else
+       {
+           Console.WriteLine("No top-up needed. Current balance: " + chosenAccount.Balance);
+       }
+   }
     static void QuickAccountOpening() { }
     static void TotalStudentsCounter() { }
     static void OverdrawnAccountCheck() { }
