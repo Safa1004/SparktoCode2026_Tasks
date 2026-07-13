@@ -16,7 +16,7 @@ class BankAccount
    public string HolderName { get; set; } 
    public double Balance { get; set; }
    //--------------------------------
-   // new fix : empty constructor added back - needed because account1/account2
+   // new fix : empty constructor (method with nio void) added back - needed because account1/account2
    // use object initializer syntax ( new BankAccount { ... } ), which relies
    // on a parameterless constructor existing. writing the parameterized one
    // below on its own would delete that "free" one C# normally gives you
@@ -84,7 +84,7 @@ class Student
     // every time a new Student gets created this number goes up 
     public static int totalStudents = 0;
     
-    // new fix : constructor - the only reason I'm adding one here is so
+    // new fix : constructor  (method with nio void) - the only reason I'm adding one here is so
     // totalStudents++ runs automatically every time "new Student()" happens
     public Student()
     {
@@ -100,7 +100,13 @@ class Student
         email = Email;
         SendEmail();
     }
-    
+    // new fix : static method - returns totalStudents. has to be static too
+    // because it needs to run WITHOUT any particular Student object existing
+    // called through the class name itself (Student.GetTotalStudents())
+    public static int GetTotalStudents()
+    {
+        return totalStudents;
+    }
     private void SendEmail()
     {
         Console.WriteLine("[Registration email sent for " + Name + "]");
@@ -982,7 +988,8 @@ class Program
    // Case 17 - Total Students Counter [Static Fields & Methods]
    static void TotalStudentsCounter()
    {
-       
+       int total = Student.GetTotalStudents();
+       Console.WriteLine("Total students created: " + total); 
    }
     static void OverdrawnAccountCheck() { }
     static void SetStudentPin() { }
