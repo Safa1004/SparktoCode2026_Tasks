@@ -34,6 +34,18 @@ class BankAccount
        Balance = startingBalance;
    }
    
+   // new fix : read-only property
+   // only has a get accessor, no set at all
+   // means I can read values but NEVER assign to it directly 
+   // juts returns true when the Balance is below 0
+   public bool IsOverdrawn
+   {
+       get { return Balance < 0; } 
+       // get in here is only accessor NO set to assign to it 
+       // so i only read the value if Balance 
+   }
+   
+   
    // Deposit - just adds the amount, then fires off the email notification
    public void Deposit(double amount)
    {
@@ -991,6 +1003,11 @@ class Program
        int total = Student.GetTotalStudents();
        Console.WriteLine("Total students created: " + total); 
    }
-    static void OverdrawnAccountCheck() { }
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 18 - Overdrawn Account Check [Read-Only Property]
+   static void OverdrawnAccountCheck()
+   {
+       
+   }
     static void SetStudentPin() { }
 }
