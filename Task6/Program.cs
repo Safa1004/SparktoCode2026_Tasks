@@ -16,6 +16,17 @@ class BankAccount
    public string HolderName { get; set; } 
    public double Balance { get; set; }
    
+   // new fix: (case 16 [Parameterized Constructor])
+   // parameterized constructor - takes all 3 values at once
+   // and sets them immediately when the object is created, instead of
+   // using object initializer syntax like { AccountNumber = ..., etc } 
+   public BankAccount(int accountNumber, string holderName, double startingBalance) // parameters 
+   {
+       AccountNumber = accountNumber; // adds them to the property
+       HolderName = holderName;
+       Balance = startingBalance;
+   }
+   
    // Deposit - just adds the amount, then fires off the email notification
    public void Deposit(double amount)
    {
@@ -288,7 +299,7 @@ class Program
         {
             student1.Address = newAddress;
             Console.WriteLine("Address updated. " + student1.Name + "'s new address: " + student1.Address); 
-            //adress is the property within Student Class
+            // address is the property within Student Class
         }
         else if (pick == 2)
         {
@@ -907,7 +918,13 @@ class Program
            Console.WriteLine("No top-up needed. Current balance: " + chosenAccount.Balance);
        }
    }
-    static void QuickAccountOpening() { }
+   // Cases 16-19 - Own Research
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 16 - Quick Account Opening [Parameterized Constructor]
+   static void QuickAccountOpening()
+   {
+       
+   }
     static void TotalStudentsCounter() { }
     static void OverdrawnAccountCheck() { }
     static void SetStudentPin() { }
