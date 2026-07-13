@@ -130,7 +130,7 @@ class Program
     static BankAccount account2 = new BankAccount { AccountNumber = 15203, HolderName = "Marwa", Balance = 50000 };
 
     static Student student1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
-    static Student student2 = new Student { Name = "Ahmed", Address = "Muscat", Grade = 70 };
+    static Student student2 = new Student { Name = "Ahmed", Address = "Muscat", Grade = 98 };
 
     static Product product1 = new Product { ProductName = "Wireless Mouse", Price = 5.500, StockQuantity = 50 };
     static Product product2 = new Product { ProductName = "Mechanical Keyboard", Price = 15.750, StockQuantity = 20 };
@@ -795,7 +795,76 @@ class Program
        Console.WriteLine("Sale successful! Revenue from this sale: " + revenue);
 
    }
-    static void ScholarshipEligibility() { }
+   
+   ////////////////////////////////////////////////////////////////////////////////////////
+   // Case 14 - Scholarship Eligibility Check
+   // First pick student then account 
+
+   static void ScholarshipEligibility()
+   {
+       Console.Write("Choose student (1 or 2): ");
+       int studentPick;
+       try
+       {
+           studentPick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+       Console.Write("Choose account (1 or 2): ");
+       int accountPick;
+       try
+       {
+           accountPick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+
+       if (studentPick != 1 && studentPick != 2)
+       {
+           Console.WriteLine("Invalid student choice.");
+           return;
+       }
+
+       if (accountPick != 1 && accountPick != 2)
+       {
+           Console.WriteLine("Invalid account choice.");
+           return;
+       }
+       // same ternary operator (shorter) 
+       Student chosenStudent = (studentPick == 1) ? student1 : student2;
+       BankAccount chosenAccount = (accountPick == 1) ? account1 : account2;
+       bool gradeOk = chosenStudent.Grade >= 80;
+       bool balanceOk = chosenAccount.Balance >= 100;
+       
+       // checking both conditions separately (not just one big && check)
+       // so I can actually tell the user WHICH one failed, instead of just
+       // saying "not eligible" with no explanation
+       if (gradeOk && balanceOk)
+       {
+           Console.WriteLine("Eligible for scholarship!");
+       }
+       else if (!gradeOk && !balanceOk)
+       {
+           Console.WriteLine("Not eligible: grade is below 80 AND balance is below 100.");
+       }
+       else if (!gradeOk)
+       {
+           Console.WriteLine("Not eligible: grade is below 80.");
+       }
+       else
+       {
+           Console.WriteLine("Not eligible: balance is below 100.");
+       }
+
+
+       
+   }
     static void FullBalanceTopUp() { }
     static void QuickAccountOpening() { }
     static void TotalStudentsCounter() { }
