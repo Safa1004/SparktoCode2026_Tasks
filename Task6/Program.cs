@@ -1005,9 +1005,37 @@ class Program
    }
    ////////////////////////////////////////////////////////////////////////////////////////
    // Case 18 - Overdrawn Account Check [Read-Only Property]
+   // just reading IsOverdrawn like any other property
+   //returns true when the Balance is below 0
    static void OverdrawnAccountCheck()
    {
-       
+       Console.Write("Choose account (1 or 2): ");
+       int pick;
+       try
+       {
+           pick = int.Parse(Console.ReadLine());
+       }
+       catch (Exception)
+       {
+           Console.WriteLine("Invalid input.");
+           return;
+       }
+
+       if (pick != 1 && pick != 2)
+       {
+           Console.WriteLine("Invalid account choice.");
+           return;
+       }
+       // same ternary operator (shorter)  
+       BankAccount chosenAccount = (pick == 1) ? account1 : account2;
+       if (chosenAccount.IsOverdrawn)
+       {
+           Console.WriteLine(chosenAccount.HolderName + "'s account is currently overdrawn.");
+       }
+       else
+       {
+           Console.WriteLine(chosenAccount.HolderName + "'s account is not overdrawn.");
+       }
    }
     static void SetStudentPin() { }
 }
