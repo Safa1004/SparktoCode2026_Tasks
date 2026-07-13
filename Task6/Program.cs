@@ -316,19 +316,7 @@ class Program
     {
         Console.WriteLine("Invalid account choice.");
     }
-    if (pick == 1)
-    {
-        account1.CheckBalance();
-        //if 1 means go to object account 1 and check balance 
-    }
-    else if (pick == 2)
-    {
-        account2.CheckBalance();
-    }
-    else
-    {
-        Console.WriteLine("Invalid account choice.");
-    }
+   
     }
 
   ////////////////////////////////////////////////////////////////////////////////////////
