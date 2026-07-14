@@ -154,8 +154,71 @@ class Program
         rooms.Add(new Room(301, "Suite", 85.00));
         rooms.Add(new Room(302, "Suite", 90.00));
     }
-    
-    static void AddNewRoom(List<Room> rooms) { }
+    //-------------------------------------------------------------------------------
+    // Case 1 - Add New Room 
+    static void AddNewRoom(List<Room> rooms)
+    {
+        int roomNumber;
+        
+        // same try-catch 
+        try
+        {
+            Console.Write("Enter room number: ");
+            roomNumber = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid room number.");
+            return;
+        }
+        if (roomNumber <= 0)
+        {
+            Console.WriteLine("Room number must be positive.");
+            return;
+        }
+        
+        Console.Write("Enter room type (Single/Double/Suite): ");
+        string roomType = Console.ReadLine();
+        
+        // same try-catch shape but for price
+        double pricePerNight;
+        try
+        {
+            Console.Write("Enter price per night: ");
+            pricePerNight = double.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid price.");
+            return;
+        }
+        if (pricePerNight <= 0)
+        {
+            Console.WriteLine("Price per night must be positive.");
+            return;
+        }
+        
+        // duplicate check 
+        // Any()  to check if the room number is duplicated before we add
+        // so this is a quick yes/no to check 
+        bool roomExists = rooms.Any(r => r.RoomNumber == roomNumber);
+        if (roomExists)
+        {
+            Console.WriteLine("Error: a room with this number already exists.");
+            return;
+        }
+        
+        // only reaches here if BOTH validations passed AND no duplicate exists
+        // now it's safe to actually create and add the room 
+        // Room's constructor
+        Room newRoom = new Room(roomNumber, roomType, pricePerNight); //ass params 
+        rooms.Add(newRoom); // adds them to the list 
+        
+        Console.WriteLine("Room added successfully!");
+        Console.WriteLine($"Room {newRoom.RoomNumber} | {newRoom.RoomType} | OMR {newRoom.PricePerNight:F2}/night");
+        Console.WriteLine($"Total rooms: {rooms.Count}");
+
+    }
     static void RegisterNewGuest(List<Guest> guests) { }
     static void BookRoomForGuest(List<Guest> guests, List<Room> rooms) { }
     static void ViewAllRooms(List<Room> rooms) { }
