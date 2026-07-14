@@ -338,7 +338,28 @@ class Program
         Console.WriteLine($"Total cost: OMR {totalCost:F2}");
         
     }
-    static void ViewAllRooms(List<Room> rooms) { }
+    
+    //-------------------------------------------------------------------------------
+    // Case 4 -  View All Rooms
+    static void ViewAllRooms(List<Room> rooms)
+    {
+        // empty check first
+        if (rooms.Count == 0)
+        {
+            Console.WriteLine("No rooms have been added yet.");
+            return;
+        }
+        
+        // OrderBy() returns a NEW sorted list, doesn't touch the original rooms
+        // OrderBy() sorts ascending (Low=>High)
+        var sortedRooms = rooms.OrderBy(r => r.RoomNumber).ToList();
+        
+        Console.WriteLine($"Total rooms: {rooms.Count}");
+        foreach (Room r in sortedRooms)
+        {
+            r.displayRoom();
+        }
+    }
     static void ViewAllGuests(List<Guest> guests) { }
     static void SearchAndFilterRooms(List<Room> rooms) { }
     static void GuestAndBookingStatistics(List<Guest> guests, List<Room> rooms) { }
