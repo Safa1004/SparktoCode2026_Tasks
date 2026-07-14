@@ -585,7 +585,56 @@ class Program
 
 
     }
-    static void UpdateRoomPrice(List<Room> rooms) { }
+    //-------------------------------------------------------------------------------
+    // Case 8 -  Update Room Price
+    static void UpdateRoomPrice(List<Room> rooms)
+    {
+        int roomNumber;
+        try
+        {
+            Console.Write("Enter room number: ");
+            roomNumber = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid room number.");
+            return;
+        }
+        
+        // FirstOrDefault() to locate the room 
+        Room foundRoom = rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+        if (foundRoom == null)
+        {
+            Console.WriteLine("Error: room not found.");
+            return;
+        }
+        
+        double newPrice;
+        try
+        {
+            Console.Write("Enter new price per night: ");
+            newPrice = double.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid price.");
+            return;
+        }
+        
+        // same positive check 
+        if (newPrice <= 0)
+        {
+            Console.WriteLine("Price must be positive. No change made.");
+            return;
+        }
+        // grab the old price BEFORE overwriting it - once we assign
+        // the new value, the old one is gone, so we snapshot it now to show
+        // both in the confirmation message 
+        double oldPrice = foundRoom.PricePerNight; 
+        foundRoom.PricePerNight = newPrice;
+
+        Console.WriteLine($"Room {foundRoom.RoomNumber} price updated: OMR {oldPrice:F2} → OMR {foundRoom.PricePerNight:F2}");
+    }
     static void GuestLookupByName(List<Guest> guests) { }
     static void RoomTypeBreakdownReport(List<Room> rooms) { }
     static void CheckOutGuest(List<Guest> guests, List<Room> rooms) { }
