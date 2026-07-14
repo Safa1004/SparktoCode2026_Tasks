@@ -635,7 +635,35 @@ class Program
 
         Console.WriteLine($"Room {foundRoom.RoomNumber} price updated: OMR {oldPrice:F2} → OMR {foundRoom.PricePerNight:F2}");
     }
-    static void GuestLookupByName(List<Guest> guests) { }
+    
+    //-------------------------------------------------------------------------------
+    // Case 9 -  Guest Lookup by Name 
+
+    static void GuestLookupByName(List<Guest> guests)
+    {
+        Console.Write("Enter name or partial name to search: ");
+        string searchText = Console.ReadLine();
+        
+        // ToLower() on both sides makes this case-insensitive - without
+        // it, searching "safa" wouldn't match a guest named "Safa" since strings
+        // are case-sensitive by default in C#
+        // Contains() checks if searchText appears ANYWHERE inside the name, not
+        // just at the start - that's what makes this a "partial" match search
+        var matches = guests.Where(g => g.GuestName.ToLower().Contains(searchText.ToLower())).ToList();
+
+        if (matches.Count == 0)
+        {
+            Console.WriteLine("No guests matched that search.");
+            return;
+        }
+        
+        Console.WriteLine($"Matches found: {matches.Count}");
+        foreach (Guest g in matches)
+        {
+            Console.WriteLine($"{g.GuestId} | {g.GuestName} | Room: {g.RoomNumber}");
+        }
+
+    }
     static void RoomTypeBreakdownReport(List<Room> rooms) { }
     static void CheckOutGuest(List<Guest> guests, List<Room> rooms) { }
     static void RemoveUnavailableRooms(List<Room> rooms, List<Guest> guests) { }
