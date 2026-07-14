@@ -68,5 +68,19 @@ class Program
        // declare lists 
        List<Room> rooms = new List<Room>();
        List<Guest> guests = new List<Guest>();
+       
+       // fills the rooms list with 6 starter rooms before anything else happens
+       PreloadRooms(rooms);
+       
+    }
+    
+    static void PreloadRooms(List<Room> rooms) // takes room as param
+    {
+        rooms.Add(new Room(101, "Single", 25.00));
+        rooms.Add(new Room(102, "Single", 25.00));
+        rooms.Add(new Room(201, "Double", 40.00));
+        rooms.Add(new Room(202, "Double", 40.00));
+        rooms.Add(new Room(301, "Suite", 85.00));
+        rooms.Add(new Room(302, "Suite", 90.00));
     }
 }
