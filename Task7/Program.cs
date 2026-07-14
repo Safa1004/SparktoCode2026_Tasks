@@ -30,6 +30,35 @@ class Room
     
 }
 
+class Guest
+{
+    public string GuestId { get; set; }
+    public string GuestName { get; set; }
+    public string RoomNumber { get; set; } // string since it needs to hold "Not Assigned" as a default before booking happens
+    public string CheckInDate { get; set; }
+    public int TotalNights { get; set; }
+    
+    
+    // constructor
+    // RoomNumber isn't a param ( hardcoded "Not Assigned")
+    public Guest(string guestId, string guestName, string checkInDate, int totalNights)
+    {
+        GuestId = guestId;
+        GuestName = guestName;
+        CheckInDate = checkInDate;
+        TotalNights = totalNights;
+        RoomNumber = "Not Assigned";
+    }
+    public void displayGuest()
+    {
+        Console.WriteLine($"{GuestId} | {GuestName} | Room: {RoomNumber} | Check-in: {CheckInDate} | Nights: {TotalNights}");
+    }
+    
+    //smth
+
+
+    
+}
 
 
 class Program
