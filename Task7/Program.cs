@@ -664,7 +664,46 @@ class Program
         }
 
     }
-    static void RoomTypeBreakdownReport(List<Room> rooms) { }
+    
+    //-------------------------------------------------------------------------------
+    // Case 10 -  Room Type Breakdown Report
+
+    static void RoomTypeBreakdownReport(List<Room> rooms)
+    {
+        // array of the 3 fixed types
+        // loop through this array and reuse the
+        // same Count()/Average() logic for each one
+        string[] roomTypes = { "Single", "Double", "Suite" };
+        foreach (string type in roomTypes)
+        {
+            // Count() with a Where condition - how many rooms of THIS type exist
+            int typeCount = rooms.Count(r => r.RoomType == type);
+            // BEFORE calling Average() - if typeCount is 0,
+            // Average() on that filtered (empty) sequence would crash, same
+            if (typeCount == 0)
+            {
+                Console.WriteLine($"{type}: 0 rooms | Average price: N/A");
+            }
+            else
+            {
+                double typeAvg = rooms.Where(r => r.RoomType == type).Average(r => r.PricePerNight);
+                Console.WriteLine($"{type}: {typeCount} rooms | Average price: OMR {typeAvg:F2}");
+            }
+        }
+        
+        // overall average across ALL rooms regardless of type 
+        
+        if (rooms.Count == 0)
+        {
+            Console.WriteLine("Overall average price: N/A");
+        }
+        else
+        {
+            double overallAvg = rooms.Average(r => r.PricePerNight);
+            Console.WriteLine($"Overall average price: OMR {overallAvg:F2}");
+        }
+
+    }
     static void CheckOutGuest(List<Guest> guests, List<Room> rooms) { }
     static void RemoveUnavailableRooms(List<Room> rooms, List<Guest> guests) { }
     static void ExtendGuestStay(List<Guest> guests) { }
