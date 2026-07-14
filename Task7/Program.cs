@@ -352,7 +352,7 @@ class Program
         
         // OrderBy() returns a NEW sorted list, doesn't touch the original rooms
         // OrderBy() sorts ascending (Low=>High)
-        var sortedRooms = rooms.OrderBy(r => r.RoomNumber).ToList();
+        var sortedRooms = rooms.OrderBy(r => r.RoomNumber).ToList(); // var auto figure out the type 
         
         Console.WriteLine($"Total rooms: {rooms.Count}");
         foreach (Room r in sortedRooms)
@@ -373,7 +373,7 @@ class Program
         }
         // OrderBy() returns a NEW sorted list, doesn't touch the original guests
         // OrderBy() sorts ascending (Low=>High)
-        var sortedGuests = guests.OrderBy(g => g.GuestName).ToList();
+        var sortedGuests = guests.OrderBy(g => g.GuestName).ToList(); // var auto figure out the type
         
         Console.WriteLine($"Total guests: {guests.Count}");
         foreach (Guest g in sortedGuests)
@@ -382,7 +382,134 @@ class Program
         }
 
     }
-    static void SearchAndFilterRooms(List<Room> rooms) { }
+    //-------------------------------------------------------------------------------
+    // Case 6 -  Search & Filter Rooms 
+    static void SearchAndFilterRooms(List<Room> rooms)
+    {
+        // this one's a sub-menu, not a single action - keeps looping until the user
+        // picks 0 (Back), same while/switch shape as the main menu but smaller
+        bool backToMain = false;
+        while (!backToMain) //true 
+        {
+            Console.WriteLine("\n--- Search & Filter Rooms ---");
+            Console.WriteLine("1. Show all available rooms");
+            Console.WriteLine("2. Filter by room type");
+            Console.WriteLine("3. Filter by max price");
+            Console.WriteLine("4. Room price statistics");
+            Console.WriteLine("0. Back");
+            Console.Write("Enter your choice: ");
+            
+            
+            int subChoice;
+            try
+            {
+                subChoice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input.");
+                continue;
+            }
+
+            switch (subChoice)
+            {
+                case 1:
+                // Where() filters down to available rooms only, OrderBy()
+                // sorts the result by price ascending - same "must not modify
+                // rooms" cuz in here Where/OrderBy both return NEW lists
+                var availableRooms = rooms.Where(r => r.IsAvailable).OrderBy(r => r.PricePerNight).ToList();
+                // var auto figure out the type
+                if (availableRooms.Count == 0)
+                {
+                    Console.WriteLine("No rooms found for the selected criteria.");
+                }
+                else
+                {
+                    Console.WriteLine($"Available rooms: {availableRooms.Count}");
+                    foreach (Room r in availableRooms)
+                        r.displayRoom();
+                }
+                break;
+                
+                case 2:
+                    Console.Write("Enter room type to filter by: ");
+                    string typeFilter = Console.ReadLine();
+                // Where() on RoomType this time, no availability
+                // condition here - task says "regardless of availability"
+                    var typeRooms = rooms.Where(r => r.RoomType == typeFilter).ToList(); // var auto figure out the type
+                    if (typeRooms.Count == 0)
+                    {
+                        Console.WriteLine("No rooms found for the selected criteria.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Rooms of type '{typeFilter}': {typeRooms.Count}");
+                        foreach (Room r in typeRooms)
+                            r.displayRoom();
+                    }
+                    break;
+                case 3:
+                    double maxPrice;
+                    try
+                    {
+                        Console.Write("Enter maximum price: ");
+                        maxPrice = double.Parse(Console.ReadLine());
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Invalid price.");
+                        break;
+                    }
+                    // TWO conditions in one Where() - available AND at
+                    // or below maxPrice, combined with && same as a normal if-statement
+                    var affordableRooms = rooms.Where(r => r.IsAvailable && r.PricePerNight <= maxPrice)
+                        .OrderBy(r => r.PricePerNight).ToList(); // var auto figure out the type
+                    if (affordableRooms.Count == 0)
+                    {
+                        Console.WriteLine("No rooms found for the selected criteria.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Rooms at or below OMR {maxPrice:F2}: {affordableRooms.Count}");
+                        foreach (Room r in affordableRooms)
+                            r.displayRoom();
+                    }
+                    break;
+                case 4:
+                // aggregation methods - these all scan the WHOLE
+                // list and return ONE value (not a filtered list like Where does)
+                // Min()/Max()/Average() would all crash on an empty list, so
+                // checking Count first is a safety net
+                if (rooms.Count == 0)
+                {
+                    Console.WriteLine("No rooms found for the selected criteria.");
+                    break;
+                }
+                int totalRooms = rooms.Count();
+                int availableCount = rooms.Count(r => r.IsAvailable);
+                double avgPrice = rooms.Average(r => r.PricePerNight);
+                double minPrice = rooms.Min(r => r.PricePerNight);
+                double maxPriceVal = rooms.Max(r => r.PricePerNight);
+                
+                Console.WriteLine($"Total rooms: {totalRooms}");
+                Console.WriteLine($"Available rooms: {availableCount}");
+                Console.WriteLine($"Average price: OMR {avgPrice:F2}");
+                Console.WriteLine($"Cheapest price: OMR {minPrice:F2}");
+                Console.WriteLine($"Most expensive price: OMR {maxPriceVal:F2}");
+                break;  
+                case 0:
+                    backToMain = true;
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid option, please choose between 0 and 4.");
+                    break;
+
+
+
+            }
+        }
+    }
     static void GuestAndBookingStatistics(List<Guest> guests, List<Room> rooms) { }
     static void UpdateRoomPrice(List<Room> rooms) { }
     static void GuestLookupByName(List<Guest> guests) { }
