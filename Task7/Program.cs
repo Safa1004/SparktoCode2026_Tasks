@@ -510,7 +510,81 @@ class Program
             }
         }
     }
-    static void GuestAndBookingStatistics(List<Guest> guests, List<Room> rooms) { }
+    
+    
+    //-------------------------------------------------------------------------------
+    // Case 7 -  Guest & Booking Statistics
+    // mixes both lists - counts/averages on guests AND rooms, plus a top 3
+    // ranking that needs calculateTotalCost() called INSIDE the LINQ itself
+    static void GuestAndBookingStatistics(List<Guest> guests, List<Room> rooms)
+    {
+        // Count() with a Where condition - counts guests whose RoomNumber isn't
+        // the default "Not Assigned" string, meaning they have an active booking
+        int totalGuests = guests.Count();
+        int guestsWithRoom = guests.Count(g => g.RoomNumber != "Not Assigned");
+        
+        // same idea but on the rooms list - counting booked rooms (not available)
+        int totalRooms = rooms.Count();
+        int bookedRooms = rooms.Count(r => !r.IsAvailable);
+        
+        Console.WriteLine($"Total guests: {totalGuests} | Guests with a room: {guestsWithRoom}");
+        Console.WriteLine($"Total rooms: {totalRooms} | Booked rooms: {bookedRooms}");
+        
+        // if nobody's booked, skip straight to the message - Average()
+        // on an empty filtered sequence would crash, same reasoning as case 06's
+        // Min/Max guard
+        // double avgNights = withBookings.Average(g => g.TotalNights); => this a crash 
+        if (guestsWithRoom == 0)
+        {
+            Console.WriteLine("No active bookings recorded.");
+            return;
+        }
+        // Average() with a Where filter (only averaging nights for guests who
+        // actually have a booking, not the whole guests list)
+        double avgNights = guests.Where(g => g.RoomNumber != "Not Assigned").Average(g => g.TotalNights);
+        Console.WriteLine($"Average nights (active bookings): {avgNights:F2}");
+        
+        // top 3 highest spenders (this one made my mind blow up lol)
+        // Where() first narrows down to guests with an active booking, then
+        // OrderByDescending() (high to low)  sorts by calculateTotalCost() result, highest first,
+        // then Take(3) grabs only the first 3 from that sorted list
+        // calculateTotalCost() needs a Room, so inside the lambda we do a
+        // FirstOrDefault() lookup to find THAT guest's specific room by RoomNumber
+        var topSpenders = guests
+            .Where(g => g.RoomNumber != "Not Assigned")
+            .OrderByDescending(g => g.calculateTotalCost(rooms.FirstOrDefault(r => r.RoomNumber.ToString() == g.RoomNumber)))
+            .Take(3) // take the first 3 
+            .ToList();
+        
+        Console.WriteLine("Top 3 highest-spending guests:");
+        foreach (Guest g in topSpenders)
+        {
+            Room theirRoom = rooms.FirstOrDefault(r => r.RoomNumber.ToString() == g.RoomNumber);
+            double cost = g.calculateTotalCost(theirRoom);
+            Console.WriteLine($"{g.GuestName} | Room {g.RoomNumber} | OMR {cost:F2}");
+        }
+        
+        // Select() to build one formatted summary line per booked guest -
+        // same FirstOrDefault() lookup pattern inside the lambda as above
+        Console.WriteLine("Booking summaries:");
+        var summaries = guests
+            .Where(g => g.RoomNumber != "Not Assigned")
+            .Select(g =>
+            {
+                Room theirRoom = rooms.FirstOrDefault(r => r.RoomNumber.ToString() == g.RoomNumber);
+                double cost = g.calculateTotalCost(theirRoom);
+                return $"{g.GuestName} — Room {g.RoomNumber} — {g.TotalNights} nights — OMR {cost:F2}";
+            })
+            .ToList();
+
+        foreach (string line in summaries)
+            Console.WriteLine(line); // this is a shortcut in of the loop only one statment lets you drop the { } entirely
+
+
+
+
+
+    }
     static void UpdateRoomPrice(List<Room> rooms) { }
     static void GuestLookupByName(List<Guest> guests) { }
     static void RoomTypeBreakdownReport(List<Room> rooms) { }
