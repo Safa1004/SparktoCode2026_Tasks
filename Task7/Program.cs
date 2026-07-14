@@ -281,6 +281,61 @@ class Program
     // Case 3 -  Book a Room for a Guest 
     static void BookRoomForGuest(List<Guest> guests, List<Room> rooms)
     {
+        Console.Write("Enter guest ID: ");
+        string guestId = Console.ReadLine();
+        
+        // same try-catch pattern 
+        int roomNumber;
+        try
+        {
+            Console.Write("Enter room number: ");
+            roomNumber = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid room number.");
+            return;
+        }
+        // FirstOrDefault() for the guest lookup
+        //  returns null if no match found instead of crashing
+        Guest foundGuest = guests.FirstOrDefault(g => g.GuestId == guestId);
+        if (foundGuest == null)
+        {
+            Console.WriteLine("Error: guest not found.");
+            return;
+        }
+        // same FirstOrDefault() pattern, this time on rooms
+        Room foundRoom = rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+        if (foundRoom == null)
+        {
+            Console.WriteLine("Error: room not found.");
+            return;
+        }
+        // availability check
+        // if the room is not ! available then...
+        if (!foundRoom.IsAvailable)
+        {
+            Console.WriteLine("Room is already booked.");
+            return;
+        }
+        // only reaches here if guest found + room found + room available 
+        
+        
+        foundGuest.RoomNumber = foundRoom.RoomNumber.ToString();
+        // the left side is int since it was declared up there as int in Room class
+        // the right side is in Guest class and it's a string it needs to hold "Not Assigned" as a default, which an int can't do
+        // we cant assign them like this directly hat'd be trying to put an int into a string variable C# won't allow it
+        // .ToString(); converts the left side (int) to string so now types would match and the assigment works 
+        foundRoom.IsAvailable = false;
+        // flips the status since now  booked by this guest
+        
+        // calculateTotalCost() needs the Room object - we already have foundRoom
+        // right here from the lookup above, so pass it straight in
+        double totalCost = foundGuest.calculateTotalCost(foundRoom);
+        Console.WriteLine("Booking confirmed!");
+        Console.WriteLine($"Guest: {foundGuest.GuestName} | Room: {foundRoom.RoomNumber} | Type: {foundRoom.RoomType}");
+        Console.WriteLine($"Price per night: OMR {foundRoom.PricePerNight:F2} | Nights: {foundGuest.TotalNights}");
+        Console.WriteLine($"Total cost: OMR {totalCost:F2}");
         
     }
     static void ViewAllRooms(List<Room> rooms) { }
