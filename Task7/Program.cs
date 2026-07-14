@@ -65,6 +65,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        
+       // declare lists 
+       List<Room> rooms = new List<Room>();
+       List<Guest> guests = new List<Guest>();
     }
 }
