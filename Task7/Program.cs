@@ -360,7 +360,28 @@ class Program
             r.displayRoom();
         }
     }
-    static void ViewAllGuests(List<Guest> guests) { }
+    //-------------------------------------------------------------------------------
+    // Case 5 -  View All Guests
+    // Same as case 4
+    static void ViewAllGuests(List<Guest> guests)
+    {
+        // same empty check pattern 
+        if (guests.Count == 0)
+        {
+            Console.WriteLine("No guests have been registered yet.");
+            return;
+        }
+        // OrderBy() returns a NEW sorted list, doesn't touch the original guests
+        // OrderBy() sorts ascending (Low=>High)
+        var sortedGuests = guests.OrderBy(g => g.GuestName).ToList();
+        
+        Console.WriteLine($"Total guests: {guests.Count}");
+        foreach (Guest g in sortedGuests)
+        {
+            g.displayGuest();
+        }
+
+    }
     static void SearchAndFilterRooms(List<Room> rooms) { }
     static void GuestAndBookingStatistics(List<Guest> guests, List<Room> rooms) { }
     static void UpdateRoomPrice(List<Room> rooms) { }
