@@ -219,7 +219,55 @@ class Program
         Console.WriteLine($"Total rooms: {rooms.Count}");
 
     }
-    static void RegisterNewGuest(List<Guest> guests) { }
+    
+    //-------------------------------------------------------------------------------
+    // Case 2 -  Register New Guest 
+    // no room assigned here - that's case 03's job, this one just registers the
+    // guest with an auto-generated ID and a "Not Assigned" room by default
+    static void RegisterNewGuest(List<Guest> guests)
+    {
+        Console.Write("Enter guest name: ");
+        string guestName = Console.ReadLine();
+
+        Console.Write("Enter check-in date: ");
+        string checkInDate = Console.ReadLine();
+        // same try-catch pattern as always
+        int totalNights;
+        try
+        {
+            Console.Write("Enter number of nights: ");
+            totalNights = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid number of nights.");
+            return;
+        }
+        // same positive check 
+        if (totalNights <= 0)
+        {
+            Console.WriteLine("Number of nights must be a positive number.");
+            return;
+        }
+        // auto-generate guest ID from current list size
+        // task says: (format: G001, G002, G003 ...) guests
+        // guests.Count BEFORE adding this one gives us the right number 
+        // (0 guests in list = this is guest #1 = G001)
+        // ToString("D3") pads the number with leading zeros to always be 3 digits
+        int nextIdNumber = guests.Count + 1;
+        string guestId = "G" + nextIdNumber.ToString("D3");
+        
+        // only reaches here if nights validation passed
+        //  RoomNumber isn't set here - Guest's constructor already hardcodes it
+        // to "Not Assigned", nothing extra needed on this end
+        Guest newGuest = new Guest(guestId, guestName, checkInDate, totalNights);
+        guests.Add(newGuest);
+
+        Console.WriteLine("Guest registered successfully!");
+        Console.WriteLine($"Guest ID: {newGuest.GuestId} | Name: {newGuest.GuestName} | Check-in: {newGuest.CheckInDate} | Nights: {newGuest.TotalNights}");
+        Console.WriteLine($"Total guests: {guests.Count}");
+        
+    }
     static void BookRoomForGuest(List<Guest> guests, List<Room> rooms) { }
     static void ViewAllRooms(List<Room> rooms) { }
     static void ViewAllGuests(List<Guest> guests) { }
