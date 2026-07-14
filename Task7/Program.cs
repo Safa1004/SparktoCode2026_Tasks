@@ -54,7 +54,16 @@ class Guest
         Console.WriteLine($"{GuestId} | {GuestName} | Room: {RoomNumber} | Check-in: {CheckInDate} | Nights: {TotalNights}");
     }
     
-    //smth
+    // new fix : calculateTotalCost - needed for case 3's booking confirmation
+    // takes Room as a param instead of storing price on Guest - keeps price
+    // live off the room
+    // this method takes in one argument, an object of type Room, and we'll refer to it as room inside the method body
+    public double calculateTotalCost(Room room) //Room is the class/ room is the param 
+    {
+        if (room == null) return 0;
+        return room.PricePerNight * TotalNights; //room is Room object and we access the PricePerNight property insde Room class 
+        // take the room's price, multiply it by however many nights this guest is staying, return that number
+    }
 
 
     
@@ -268,7 +277,12 @@ class Program
         Console.WriteLine($"Total guests: {guests.Count}");
         
     }
-    static void BookRoomForGuest(List<Guest> guests, List<Room> rooms) { }
+    //-------------------------------------------------------------------------------
+    // Case 3 -  Book a Room for a Guest 
+    static void BookRoomForGuest(List<Guest> guests, List<Room> rooms)
+    {
+        
+    }
     static void ViewAllRooms(List<Room> rooms) { }
     static void ViewAllGuests(List<Guest> guests) { }
     static void SearchAndFilterRooms(List<Room> rooms) { }
