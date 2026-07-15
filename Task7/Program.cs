@@ -767,7 +767,61 @@ class Program
 
     }
     
-    static void RemoveUnavailableRooms(List<Room> rooms, List<Guest> guests) { }
+    //-------------------------------------------------------------------------------
+    // Case 12 - Remove Unavailable Rooms
+    // a room is only removable if it's unavailable AND no
+    // guest currently holds that room number
+
+    static void RemoveUnavailableRooms(List<Room> rooms, List<Guest> guests)
+    {
+        // local function lets us write the removability check 
+        bool IsRemovable(Room r)
+        {
+            // unavailable AND no guest anywhere in guests has this room number 
+            // Any() here asks does no guest have this room number?
+            // see if room number matches guest room number and ofc making both of them have same data type 
+            return !r.IsAvailable && !guests.Any(g => g.RoomNumber == r.RoomNumber.ToString());
+        }
+        
+        // preview - Where() => (filter) using the local function above, sorted by room number
+        var removableRooms = rooms.Where(r => IsRemovable(r)).OrderBy(r => r.RoomNumber).ToList();
+
+        if (removableRooms.Count == 0)
+        {
+            Console.WriteLine("All unavailable rooms are currently occupied. No rooms can be decommissioned.");
+            return;
+        }
+        
+        Console.WriteLine($"Rooms safe to remove: {removableRooms.Count}");
+        foreach (Room r in removableRooms)
+        {
+            Console.WriteLine($"Room {r.RoomNumber} | {r.RoomType} | OMR {r.PricePerNight:F2}");
+        }
+
+        Console.Write("Confirm removal? (Y/N): ");
+        string confirm = Console.ReadLine();
+
+        if (confirm.ToUpper() != "Y")
+        {
+            Console.WriteLine("Removal cancelled. No rooms removed.");
+            return;
+        }
+        
+        // RemoveAll() takes a lambda (function let me write inline), calling the SAME local function
+        // here as the preview used above - this is what guarantees "preview and
+        // RemoveAll must apply identical logic" just like what the case req 
+        int removedCount = rooms.RemoveAll(r => IsRemovable(r));
+
+        Console.WriteLine($"Removed {removedCount} room(s).");
+        Console.WriteLine($"Total rooms remaining: {rooms.Count}");
+
+        // Select() to project just room number + type for what's left
+        var remaining = rooms.Select(r => $"{r.RoomNumber} - {r.RoomType}").ToList();
+        Console.WriteLine("Remaining rooms:");
+        foreach (string line in remaining)
+            Console.WriteLine(line);
+
+    }
     static void ExtendGuestStay(List<Guest> guests) { }
     static void HighestRevenueBooking(List<Guest> guests) { }
     static void GuestPaginationViewer(List<Guest> guests) { }
