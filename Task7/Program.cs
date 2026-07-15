@@ -822,7 +822,53 @@ class Program
             Console.WriteLine(line);
 
     }
-    static void ExtendGuestStay(List<Guest> guests) { }
+    
+    //-------------------------------------------------------------------------------
+    // Case 13 - Extend Guest Stay
+    // validate active booking, add nights, recalc cost via calculateTotalCost()
+
+    static void ExtendGuestStay(List<Guest> guests)
+    {
+        //validate active booking
+        Console.Write("Enter guest ID: ");
+        string guestId = Console.ReadLine();
+
+        Guest foundGuest = guests.FirstOrDefault(g => g.GuestId == guestId);
+        if (foundGuest == null)
+        {
+            Console.WriteLine("Error: guest not found.");
+            return;
+        }
+        
+        if (foundGuest.RoomNumber == "Not Assigned")
+        {
+            Console.WriteLine("This guest has no active booking to extend.");
+            return;
+        }
+        
+        int additionalNights;
+        try
+        {
+            Console.Write("Enter additional nights: ");
+            additionalNights = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid number of nights. No change made.");
+            return;
+        }
+        
+        // same positive check pattern
+        if (additionalNights <= 0)
+        {
+            Console.WriteLine("Additional nights must be a positive number. No change made.");
+            return;
+        }
+        // only reaches here if guest found + active booking + valid nights 
+        
+        foundGuest.TotalNights += additionalNights;
+        Console.WriteLine($"Stay extended! New total nights: {foundGuest.TotalNights}");
+    }
     static void HighestRevenueBooking(List<Guest> guests) { }
     static void GuestPaginationViewer(List<Guest> guests) { }
 }
