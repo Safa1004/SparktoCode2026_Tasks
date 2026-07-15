@@ -827,7 +827,7 @@ class Program
     // Case 13 - Extend Guest Stay
     // validate active booking, add nights, recalc cost via calculateTotalCost()
 
-    static void ExtendGuestStay(List<Guest> guests)
+    static void ExtendGuestStay(List<Guest> guests, List<Room> rooms) // fix
     {
         //validate active booking
         Console.Write("Enter guest ID: ");
