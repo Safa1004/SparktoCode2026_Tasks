@@ -866,9 +866,14 @@ class Program
             return;
         }
         // only reaches here if guest found + active booking + valid nights 
-        
+       
         foundGuest.TotalNights += additionalNights;
+        // fix 
+        Room theirRoom = rooms.FirstOrDefault(r => r.RoomNumber.ToString() == foundGuest.RoomNumber);
+        double newCost = foundGuest.calculateTotalCost(theirRoom);
+        
         Console.WriteLine($"Stay extended! New total nights: {foundGuest.TotalNights}");
+        Console.WriteLine($"New total cost: OMR {newCost:F2}");
     }
     
     //-------------------------------------------------------------------------------
