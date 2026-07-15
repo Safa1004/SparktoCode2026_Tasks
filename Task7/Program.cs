@@ -905,8 +905,57 @@ class Program
             Console.WriteLine($"{entry.Name} | Room {entry.Room} | OMR {entry.Cost:F2}");
         }
 
-
-       
     }
-    static void GuestPaginationViewer(List<Guest> guests) { }
+    //-------------------------------------------------------------------------------
+    // Case 15 - Guest Pagination Viewer
+    //The guest list has grown large. The front desk wants to browse it a page at a time instead of one long dump
+    // Skip()/Take() combo to grab only the guests on one page, fixed page size of 3 per the task's recommendation
+    static void GuestPaginationViewer(List<Guest> guests)
+    {
+        //fixed page size as a constant up top (easy to change later)
+        const int pageSize = 3;
+
+        if (guests.Count == 0)
+        {
+            Console.WriteLine("No guests have been registered yet.");
+            return;
+        }
+
+        int pageNumber;
+        try
+        {
+            Console.Write("Enter page number: ");
+            pageNumber = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid page number.");
+            return;
+        }
+        // total pages calculated from guest count and page size -
+        // Math.Ceiling rounds UP, so 7 guests / 3 per page = 2.33 -> 3 pages,
+        // not 2 (that last partial page still counts as a real page)
+        int totalPages = (int)Math.Ceiling(guests.Count / (double)pageSize);
+        
+        // out-of-range guard - page 0, negative pages, or anything past totalPages
+        if (pageNumber <= 0 || pageNumber > totalPages)
+        {
+            Console.WriteLine("That page does not exist.");
+            return;
+        }
+        
+        // Skip() jumps past the earlier pages' worth of guests, Take() grabs
+        // just this page's worth
+        // if im on page 1 Skip(0).Take(3) => first 3 guests
+        // Page 2: Skip(3).Take(3) => guests 4–6
+        // and so on 
+        var pageGuests = guests.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+        Console.WriteLine($"Page {pageNumber} of {totalPages}");
+        foreach (Guest g in pageGuests)
+        {
+            g.displayGuest();
+        }
+        
+    }
 }
