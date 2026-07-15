@@ -131,7 +131,7 @@ class Program
                case 11: CheckOutGuest(guests, rooms); break;
                case 12: RemoveUnavailableRooms(rooms, guests); break;
                case 13: ExtendGuestStay(guests, rooms); break; // fix 
-               case 14: HighestRevenueBooking(guests); break;
+               case 14: HighestRevenueBooking(guests, rooms); break; // fix 
                case 15: GuestPaginationViewer(guests); break;
                case 0:
                    exitApp = true;
@@ -873,9 +873,10 @@ class Program
     //-------------------------------------------------------------------------------
     // Case 14 - Highest Revenue Booking 
 
-    static void HighestRevenueBooking(List<Guest> guests)
+    static void HighestRevenueBooking(List<Guest> guests, List<Room> rooms)
     {
         
+       
     }
     static void GuestPaginationViewer(List<Guest> guests) { }
 }
