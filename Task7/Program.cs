@@ -130,7 +130,7 @@ class Program
                case 10: RoomTypeBreakdownReport(rooms); break;
                case 11: CheckOutGuest(guests, rooms); break;
                case 12: RemoveUnavailableRooms(rooms, guests); break;
-               case 13: ExtendGuestStay(guests); break;
+               case 13: ExtendGuestStay(guests, rooms); break; // fix 
                case 14: HighestRevenueBooking(guests); break;
                case 15: GuestPaginationViewer(guests); break;
                case 0:
@@ -869,6 +869,13 @@ class Program
         foundGuest.TotalNights += additionalNights;
         Console.WriteLine($"Stay extended! New total nights: {foundGuest.TotalNights}");
     }
-    static void HighestRevenueBooking(List<Guest> guests) { }
+    
+    //-------------------------------------------------------------------------------
+    // Case 14 - Highest Revenue Booking 
+
+    static void HighestRevenueBooking(List<Guest> guests)
+    {
+        
+    }
     static void GuestPaginationViewer(List<Guest> guests) { }
 }
