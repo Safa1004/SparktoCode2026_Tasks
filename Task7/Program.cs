@@ -704,7 +704,69 @@ class Program
         }
 
     }
-    static void CheckOutGuest(List<Guest> guests, List<Room> rooms) { }
+    
+    //-------------------------------------------------------------------------------
+    // Case 11 -  Check Out a Guest
+
+    static void CheckOutGuest(List<Guest> guests, List<Room> rooms)
+    {
+        Console.Write("Enter guest ID to check out: ");
+        string guestId = Console.ReadLine();
+
+        // first lookup - find the guest
+        Guest foundGuest = guests.FirstOrDefault(g => g.GuestId == guestId);
+        if (foundGuest == null)
+        {
+            Console.WriteLine("Error: guest not found.");
+            return;
+        }
+        // active booking check - a guest can exist but have no room yet
+        // so checking existence alone isn't enough here
+        if (foundGuest.RoomNumber == "Not Assigned")
+        {
+            Console.WriteLine("This guest has no active booking.");
+            return;
+        }
+        
+        // second lookup - LINKED to the first one lookup , using foundGuest.RoomNumber
+        // (not user input) to find their specific room, same .ToString() type
+        // (RoomNumber is int on Room, string on Guest)
+        // Room is found and guest is found (they match)
+        Room foundRoom = rooms.FirstOrDefault(r => r.RoomNumber.ToString() == foundGuest.RoomNumber);
+        
+        // final bill, calculateTotalCost() needs foundRoom which I just got above
+        double totalCost = foundGuest.calculateTotalCost(foundRoom);
+        Console.WriteLine("----- Final Bill -----");
+        Console.WriteLine($"Guest: {foundGuest.GuestName} | Room: {foundRoom.RoomNumber} | Type: {foundRoom.RoomType}");
+        Console.WriteLine($"Check-in: {foundGuest.CheckInDate} | Nights: {foundGuest.TotalNights}");
+        Console.WriteLine($"Price per night: OMR {foundRoom.PricePerNight:F2} | Total cost: OMR {totalCost:F2}");
+
+        Console.Write("Confirm checkout? (Y/N): ");
+        string confirm = Console.ReadLine();
+
+        // only proceed on Y - ToUpper() so lowercase "y" still works
+        if (confirm.ToUpper() != "Y")
+        {
+            Console.WriteLine("Checkout cancelled. No changes made.");
+            return;
+        }
+        
+        // room MUST be freed before the guest is removed 
+        // this order matters, so IsAvailable flips first, THEN Remove() happens
+        foundRoom.IsAvailable = true;
+        guests.Remove(foundGuest);
+
+        Console.WriteLine("Checkout complete!");
+        Console.WriteLine($"Remaining guests: {guests.Count} | Remaining rooms: {rooms.Count}");
+
+        // Any() => (yes/no) to confirm the room shows as available now 
+        bool roomIsFree = rooms.Any(r => r.RoomNumber == foundRoom.RoomNumber && r.IsAvailable);
+        // ternary operator (shorter) // if the room is not available 
+        Console.WriteLine(roomIsFree ? $"Room {foundRoom.RoomNumber} is now available." : "Something went wrong freeing the room.");
+
+
+    }
+    
     static void RemoveUnavailableRooms(List<Room> rooms, List<Guest> guests) { }
     static void ExtendGuestStay(List<Guest> guests) { }
     static void HighestRevenueBooking(List<Guest> guests) { }
