@@ -826,9 +826,10 @@ class Program
     //-------------------------------------------------------------------------------
     // Case 13 - Extend Guest Stay
     // validate active booking, add nights, recalc cost via calculateTotalCost()
-
+    // add rooms cuz we need to cal the cost (calculateTotalCost() needs a Room object)
     static void ExtendGuestStay(List<Guest> guests, List<Room> rooms) // fix
     {
+        
         //validate active booking
         Console.Write("Enter guest ID: ");
         string guestId = Console.ReadLine();
@@ -872,10 +873,39 @@ class Program
     
     //-------------------------------------------------------------------------------
     // Case 14 - Highest Revenue Booking 
-
+    
+    //which single active booking is generating the most revenue
     static void HighestRevenueBooking(List<Guest> guests, List<Room> rooms)
     {
+        // Where() first - only guests with an active booking count here
+        var activeGuests = guests.Where(g => g.RoomNumber != "Not Assigned").ToList();
+
+        if (activeGuests.Count == 0)
+        {
+            Console.WriteLine("No active bookings recorded.");
+            return;
+        }
         
+        // Select() to project each guest into an anonymous object
+        // holding just the 3 fields we actually need (name, room, cost) 
+        // same inside the lambda 
+        var projected = activeGuests.Select(g =>
+        {
+            Room theirRoom = rooms.FirstOrDefault(r => r.RoomNumber.ToString() == g.RoomNumber);
+            double cost = g.calculateTotalCost(theirRoom);
+            return new { Name = g.GuestName, Room = g.RoomNumber, Cost = cost };
+        });
+        
+        // OrderByDescending on the Cost field from what we just projected (highest one)
+        var topEarner = projected.OrderByDescending(x => x.Cost).Take(1).ToList();
+
+        Console.WriteLine("Highest revenue booking:");
+        foreach (var entry in topEarner)
+        {
+            Console.WriteLine($"{entry.Name} | Room {entry.Room} | OMR {entry.Cost:F2}");
+        }
+
+
        
     }
     static void GuestPaginationViewer(List<Guest> guests) { }
