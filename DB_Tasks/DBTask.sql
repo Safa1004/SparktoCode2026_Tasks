@@ -170,3 +170,7 @@ GO
 UPDATE Employee
 SET Salary = Salary + 100.00
 WHERE Ssn = '333333333';
+-- 2) Reassign an employee to a new department.
+UPDATE Employee
+SET Dno = 2
+WHERE Ssn = '333333333';
