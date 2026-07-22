@@ -63,3 +63,17 @@ CREATE TABLE Dept_Locations (
                                     REFERENCES Department(Dnumber)
 );
 GO
+-- ------------------------------------------------------------
+-- PROJECT
+-- ------------------------------------------------------------
+CREATE TABLE Project (
+                         Pnumber INT NOT NULL,
+                         Pname VARCHAR(50)  NOT NULL,
+                         Plocation VARCHAR(50)  NULL,
+                         Dnum INT  NOT NULL,
+                         CONSTRAINT PK_Project PRIMARY KEY (Pnumber),
+                         CONSTRAINT UQ_Project_Name UNIQUE (Pname),
+                         CONSTRAINT FK_Project_Department FOREIGN KEY (Dnum)
+                             REFERENCES Department(Dnumber)
+);
+GO
