@@ -92,3 +92,18 @@ CREATE TABLE Works_On (
                               REFERENCES Project(Pnumber)
 );
 GO
+-- ------------------------------------------------------------
+-- DEPENDENT (weak entity, identifying relationship DEPENDENTS_OF)
+-- ------------------------------------------------------------
+CREATE TABLE Dependent (
+                           Essn CHAR(9) NOT NULL,
+                           Dependent_name  VARCHAR(50)  NOT NULL,
+                           Sex CHAR(1) NULL,
+                           Bdate  DATE NULL,
+                           Relationship VARCHAR(20) NULL,
+                           CONSTRAINT PK_Dependent PRIMARY KEY (Essn, Dependent_name),
+                           CONSTRAINT CK_Dependent_Sex CHECK (Sex IN ('M', 'F')),
+                           CONSTRAINT FK_Dependent_Employee FOREIGN KEY (Essn)
+                               REFERENCES Employee(Ssn)
+);
+GO
