@@ -178,3 +178,7 @@ WHERE Ssn = '333333333';
 UPDATE Project
 SET Plocation = 'Sur'
 WHERE Pnumber = 30;
+-- 4) Update hours worked on a project.
+UPDATE Works_On
+SET Hours = 25.0
+WHERE Essn = '222222222' AND Pno = 10;
