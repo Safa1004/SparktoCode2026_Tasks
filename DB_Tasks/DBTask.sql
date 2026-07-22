@@ -174,3 +174,7 @@ WHERE Ssn = '333333333';
 UPDATE Employee
 SET Dno = 2
 WHERE Ssn = '333333333';
+-- 3) Change a project's location.
+UPDATE Project
+SET Plocation = 'Sur'
+WHERE Pnumber = 30;
