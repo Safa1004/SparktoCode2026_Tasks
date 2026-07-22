@@ -77,3 +77,18 @@ CREATE TABLE Project (
                              REFERENCES Department(Dnumber)
 );
 GO
+-- ------------------------------------------------------------
+-- WORKS_ON (M:N junction table between Employee and Project)
+-- ------------------------------------------------------------
+CREATE TABLE Works_On (
+                          Essn CHAR(9) NOT NULL,
+                          Pno INT NOT NULL,
+                          Hours DECIMAL(4,1)  NOT NULL, --4 total digits, 1 after the decimal
+                          CONSTRAINT PK_Works_On PRIMARY KEY (Essn, Pno), --composite PK
+                          CONSTRAINT CK_WorksOn_Hours CHECK (Hours > 0),
+                          CONSTRAINT FK_WorksOn_Employee FOREIGN KEY (Essn)
+                              REFERENCES Employee(Ssn),
+                          CONSTRAINT FK_WorksOn_Project FOREIGN KEY (Pno)
+                              REFERENCES Project(Pnumber)
+);
+GO
