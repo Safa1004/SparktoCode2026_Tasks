@@ -166,3 +166,7 @@ VALUES
     ('222222222', 'Huda',  'F', '2015-05-10', 'Daughter'),
     ('444444444', 'Salim', 'M', '2018-11-02', 'Son');
 GO
+-- 1) Give an employee a raise.
+UPDATE Employee
+SET Salary = Salary + 100.00
+WHERE Ssn = '333333333';
