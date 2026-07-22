@@ -43,3 +43,12 @@ CREATE TABLE Employee (
 
 );
 GO
+-- ------------------------------------------------------------
+-- Patching Department with the deferred FK
+-- ------------------------------------------------------------
+ALTER TABLE Department
+    ADD CONSTRAINT FK_Department_Manager FOREIGN KEY (Mgr_ssn)
+        REFERENCES Employee(Ssn);
+-- Mgr_ssn in Department must match a Ssn value in Employee.
+GO
+
