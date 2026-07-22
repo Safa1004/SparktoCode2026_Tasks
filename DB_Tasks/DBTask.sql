@@ -182,3 +182,17 @@ WHERE Pnumber = 30;
 UPDATE Works_On
 SET Hours = 25.0
 WHERE Essn = '222222222' AND Pno = 10;
+-- 5) Correct a dependent's relationship value.
+UPDATE Dependent
+SET Relationship = 'Child'
+WHERE Essn = '222222222' AND Dependent_name = 'Maria';
+
+UPDATE Employee SET Super_ssn = '111111111' WHERE Super_ssn = '222222222';
+DELETE FROM Dependent WHERE Essn = '222222222';
+DELETE FROM Works_On  WHERE Essn = '222222222';
+DELETE FROM Employee  WHERE Ssn  = '222222222';
+GO
+
+DELETE FROM Works_On WHERE Pno = 30;
+DELETE FROM Project  WHERE Pnumber = 30;
+GO
