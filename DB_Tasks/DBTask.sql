@@ -52,3 +52,14 @@ ALTER TABLE Department
 -- Mgr_ssn in Department must match a Ssn value in Employee.
 GO
 
+-- ------------------------------------------------------------
+-- DEPT_LOCATIONS (multivalued attribute "Locations" -> its own table)
+-- ------------------------------------------------------------
+CREATE TABLE Dept_Locations (
+                                Dnumber INT NOT NULL,
+                                Dlocation VARCHAR(50)  NOT NULL,
+                                CONSTRAINT PK_Dept_Locations PRIMARY KEY (Dnumber, Dlocation),
+                                CONSTRAINT FK_DeptLocations_Department FOREIGN KEY (Dnumber)
+                                    REFERENCES Department(Dnumber)
+);
+GO
