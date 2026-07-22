@@ -185,8 +185,9 @@ WHERE Essn = '222222222' AND Pno = 10;
 -- 5) Correct a dependent's relationship value.
 UPDATE Dependent
 SET Relationship = 'Child'
-WHERE Essn = '222222222' AND Dependent_name = 'Maria';
+WHERE Essn = '222222222' AND Dependent_name = 'Huda';
 
+UPDATE Department SET Mgr_ssn = '444444444' WHERE Mgr_ssn = '222222222';
 UPDATE Employee SET Super_ssn = '111111111' WHERE Super_ssn = '222222222';
 DELETE FROM Dependent WHERE Essn = '222222222';
 DELETE FROM Works_On  WHERE Essn = '222222222';
